@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2736DAE31DB6BC5600E96EFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736DAE21DB6BC5600E96EFC /* main.m */; };
+		2736DAE61DB6BC5600E96EFC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736DAE51DB6BC5600E96EFC /* AppDelegate.m */; };
+		2736DAEE1DB6BC5600E96EFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2736DAED1DB6BC5600E96EFC /* Assets.xcassets */; };
+		2736DAF11DB6BC5600E96EFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2736DAEF1DB6BC5600E96EFC /* LaunchScreen.storyboard */; };
+		2736DAF91DB6BFFD00E96EFC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2736DAF81DB6BFFC00E96EFC /* GoogleService-Info.plist */; };
+		27CC7FB31DC96A6700D4E299 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F901DC96A6700D4E299 /* Contents.json */; };
+		27CC7FB41DC96A6700D4E299 /* ic_account_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F911DC96A6700D4E299 /* ic_account_circle.png */; };
+		27CC7FB51DC96A6700D4E299 /* ic_account_circle_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F921DC96A6700D4E299 /* ic_account_circle_2x.png */; };
+		27CC7FB61DC96A6700D4E299 /* ic_account_circle_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F931DC96A6700D4E299 /* ic_account_circle_3x.png */; };
+		27CC7FB71DC96A6700D4E299 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F951DC96A6700D4E299 /* Contents.json */; };
+		27CC7FB81DC96A6700D4E299 /* ic_chat_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F961DC96A6700D4E299 /* ic_chat_bubble.png */; };
+		27CC7FB91DC96A6700D4E299 /* ic_chat_bubble_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F971DC96A6700D4E299 /* ic_chat_bubble_2x.png */; };
+		27CC7FBA1DC96A6700D4E299 /* ic_chat_bubble_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F981DC96A6700D4E299 /* ic_chat_bubble_3x.png */; };
+		27CC7FBB1DC96A6700D4E299 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F9A1DC96A6700D4E299 /* Contents.json */; };
+		27CC7FBC1DC96A6700D4E299 /* ic_contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F9B1DC96A6700D4E299 /* ic_contacts.png */; };
+		27CC7FBD1DC96A6700D4E299 /* ic_contacts_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F9C1DC96A6700D4E299 /* ic_contacts_2x.png */; };
+		27CC7FBE1DC96A6700D4E299 /* ic_contacts_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F9D1DC96A6700D4E299 /* ic_contacts_3x.png */; };
+		27CC7FCE1DC96A6700D4E299 /* profile_icon_9.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7FB01DC96A6700D4E299 /* profile_icon_9.png */; };
+		27CC7FCF1DC96A6700D4E299 /* profile_icon_9.xcf in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7FB11DC96A6700D4E299 /* profile_icon_9.xcf */; };
+		27CC7FD01DC96A6700D4E299 /* splash_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7FB21DC96A6700D4E299 /* splash_test.png */; };
+		27F967BD1DCA896900E58A55 /* FirebaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F967BC1DCA896900E58A55 /* FirebaseHelper.m */; };
+		27F967CB1DCA8AAB00E58A55 /* ChatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F967C11DCA8AAB00E58A55 /* ChatsViewController.m */; };
+		27F967CC1DCA8AAB00E58A55 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F967C41DCA8AAB00E58A55 /* ContactsViewController.m */; };
+		27F967CE1DCA8AAB00E58A55 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F967CA1DCA8AAB00E58A55 /* ProfileViewController.m */; };
+		27F967D61DCA8B4600E58A55 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F967D51DCA8B4600E58A55 /* ViewController.m */; };
+		27F967D91DCA8BCF00E58A55 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F967D81DCA8BCF00E58A55 /* HomeViewController.m */; };
+		27F967DB1DCA8C3200E58A55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27F967DA1DCA8C3200E58A55 /* Main.storyboard */; };
+		E977C4A68AE5D25C629740EF /* libPods-CustomChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 745F74ED2B71A5094826349C /* libPods-CustomChat.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0A2C08D4EFC707FBAC72422C /* Pods-CustomChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomChat/Pods-CustomChat.release.xcconfig"; sourceTree = "<group>"; };
+		2736DADE1DB6BC5500E96EFC /* CustomChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2736DAE21DB6BC5600E96EFC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2736DAE41DB6BC5600E96EFC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CustomChat/AppDelegate.h; sourceTree = "<group>"; };
+		2736DAE51DB6BC5600E96EFC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CustomChat/AppDelegate.m; sourceTree = "<group>"; };
+		2736DAED1DB6BC5600E96EFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2736DAF01DB6BC5600E96EFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2736DAF21DB6BC5600E96EFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2736DAF81DB6BFFC00E96EFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		27CC7F901DC96A6700D4E299 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
+		27CC7F911DC96A6700D4E299 /* ic_account_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_account_circle.png; sourceTree = "<group>"; };
+		27CC7F921DC96A6700D4E299 /* ic_account_circle_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_account_circle_2x.png; sourceTree = "<group>"; };
+		27CC7F931DC96A6700D4E299 /* ic_account_circle_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_account_circle_3x.png; sourceTree = "<group>"; };
+		27CC7F951DC96A6700D4E299 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
+		27CC7F961DC96A6700D4E299 /* ic_chat_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_chat_bubble.png; sourceTree = "<group>"; };
+		27CC7F971DC96A6700D4E299 /* ic_chat_bubble_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_chat_bubble_2x.png; sourceTree = "<group>"; };
+		27CC7F981DC96A6700D4E299 /* ic_chat_bubble_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_chat_bubble_3x.png; sourceTree = "<group>"; };
+		27CC7F9A1DC96A6700D4E299 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
+		27CC7F9B1DC96A6700D4E299 /* ic_contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_contacts.png; sourceTree = "<group>"; };
+		27CC7F9C1DC96A6700D4E299 /* ic_contacts_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_contacts_2x.png; sourceTree = "<group>"; };
+		27CC7F9D1DC96A6700D4E299 /* ic_contacts_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_contacts_3x.png; sourceTree = "<group>"; };
+		27CC7FB01DC96A6700D4E299 /* profile_icon_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_icon_9.png; sourceTree = "<group>"; };
+		27CC7FB11DC96A6700D4E299 /* profile_icon_9.xcf */ = {isa = PBXFileReference; lastKnownFileType = file; path = profile_icon_9.xcf; sourceTree = "<group>"; };
+		27CC7FB21DC96A6700D4E299 /* splash_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_test.png; sourceTree = "<group>"; };
+		27F967BB1DCA896900E58A55 /* FirebaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseHelper.h; sourceTree = "<group>"; };
+		27F967BC1DCA896900E58A55 /* FirebaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirebaseHelper.m; sourceTree = "<group>"; };
+		27F967C01DCA8AAB00E58A55 /* ChatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatsViewController.h; sourceTree = "<group>"; };
+		27F967C11DCA8AAB00E58A55 /* ChatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatsViewController.m; sourceTree = "<group>"; };
+		27F967C31DCA8AAB00E58A55 /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		27F967C41DCA8AAB00E58A55 /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		27F967C91DCA8AAB00E58A55 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		27F967CA1DCA8AAB00E58A55 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		27F967D41DCA8B4600E58A55 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		27F967D51DCA8B4600E58A55 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		27F967D71DCA8BCF00E58A55 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		27F967D81DCA8BCF00E58A55 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		27F967DA1DCA8C3200E58A55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		745F74ED2B71A5094826349C /* libPods-CustomChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		78B06963E54E45761E020E95 /* Pods-CustomChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomChat/Pods-CustomChat.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2736DADB1DB6BC5500E96EFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E977C4A68AE5D25C629740EF /* libPods-CustomChat.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2736DAD51DB6BC5500E96EFC = {
+			isa = PBXGroup;
+			children = (
+				2736DAE01DB6BC5600E96EFC /* CustomChat */,
+				2736DADF1DB6BC5500E96EFC /* Products */,
+				5778AA9F8F529069A7B237E3 /* Pods */,
+				48F2179183FB8B423FD62219 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2736DADF1DB6BC5500E96EFC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2736DADE1DB6BC5500E96EFC /* CustomChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2736DAE01DB6BC5600E96EFC /* CustomChat */ = {
+			isa = PBXGroup;
+			children = (
+				27CC7F771DC919AD00D4E299 /* modules */,
+				2736DAED1DB6BC5600E96EFC /* Assets.xcassets */,
+				2736DAF81DB6BFFC00E96EFC /* GoogleService-Info.plist */,
+				2736DAF21DB6BC5600E96EFC /* Info.plist */,
+				27CC7F8E1DC96A6600D4E299 /* resources */,
+				2736DAE11DB6BC5600E96EFC /* Supporting Files */,
+			);
+			path = CustomChat;
+			sourceTree = "<group>";
+		};
+		2736DAE11DB6BC5600E96EFC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2736DAE21DB6BC5600E96EFC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2736DAFA1DB6C1A400E96EFC /* launch */ = {
+			isa = PBXGroup;
+			children = (
+				2736DAEF1DB6BC5600E96EFC /* LaunchScreen.storyboard */,
+			);
+			name = launch;
+			path = CustomChat;
+			sourceTree = "<group>";
+		};
+		27CC7F771DC919AD00D4E299 /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				27F967D31DCA8B4600E58A55 /* main */,
+				27F967BE1DCA8AAB00E58A55 /* home */,
+				27F967BA1DCA896900E58A55 /* domain */,
+				2736DAFA1DB6C1A400E96EFC /* launch */,
+				2736DAE41DB6BC5600E96EFC /* AppDelegate.h */,
+				2736DAE51DB6BC5600E96EFC /* AppDelegate.m */,
+			);
+			name = modules;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		27CC7F8E1DC96A6600D4E299 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				27CC7F8F1DC96A6700D4E299 /* ic_account_circle.imageset */,
+				27CC7F941DC96A6700D4E299 /* ic_chat_bubble.imageset */,
+				27CC7F991DC96A6700D4E299 /* ic_contacts.imageset */,
+				27CC7FB01DC96A6700D4E299 /* profile_icon_9.png */,
+				27CC7FB11DC96A6700D4E299 /* profile_icon_9.xcf */,
+				27CC7FB21DC96A6700D4E299 /* splash_test.png */,
+			);
+			name = resources;
+			path = ../resources;
+			sourceTree = "<group>";
+		};
+		27CC7F8F1DC96A6700D4E299 /* ic_account_circle.imageset */ = {
+			isa = PBXGroup;
+			children = (
+				27CC7F901DC96A6700D4E299 /* Contents.json */,
+				27CC7F911DC96A6700D4E299 /* ic_account_circle.png */,
+				27CC7F921DC96A6700D4E299 /* ic_account_circle_2x.png */,
+				27CC7F931DC96A6700D4E299 /* ic_account_circle_3x.png */,
+			);
+			path = ic_account_circle.imageset;
+			sourceTree = "<group>";
+		};
+		27CC7F941DC96A6700D4E299 /* ic_chat_bubble.imageset */ = {
+			isa = PBXGroup;
+			children = (
+				27CC7F951DC96A6700D4E299 /* Contents.json */,
+				27CC7F961DC96A6700D4E299 /* ic_chat_bubble.png */,
+				27CC7F971DC96A6700D4E299 /* ic_chat_bubble_2x.png */,
+				27CC7F981DC96A6700D4E299 /* ic_chat_bubble_3x.png */,
+			);
+			path = ic_chat_bubble.imageset;
+			sourceTree = "<group>";
+		};
+		27CC7F991DC96A6700D4E299 /* ic_contacts.imageset */ = {
+			isa = PBXGroup;
+			children = (
+				27CC7F9A1DC96A6700D4E299 /* Contents.json */,
+				27CC7F9B1DC96A6700D4E299 /* ic_contacts.png */,
+				27CC7F9C1DC96A6700D4E299 /* ic_contacts_2x.png */,
+				27CC7F9D1DC96A6700D4E299 /* ic_contacts_3x.png */,
+			);
+			path = ic_contacts.imageset;
+			sourceTree = "<group>";
+		};
+		27F967BA1DCA896900E58A55 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				27F967BB1DCA896900E58A55 /* FirebaseHelper.h */,
+				27F967BC1DCA896900E58A55 /* FirebaseHelper.m */,
+			);
+			name = domain;
+			path = CustomChat/modules/domain;
+			sourceTree = "<group>";
+		};
+		27F967BE1DCA8AAB00E58A55 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				27F967D71DCA8BCF00E58A55 /* HomeViewController.h */,
+				27F967D81DCA8BCF00E58A55 /* HomeViewController.m */,
+				27F967BF1DCA8AAB00E58A55 /* chats */,
+				27F967C21DCA8AAB00E58A55 /* contacts */,
+				27F967C81DCA8AAB00E58A55 /* profile */,
+			);
+			name = home;
+			path = CustomChat/modules/home;
+			sourceTree = "<group>";
+		};
+		27F967BF1DCA8AAB00E58A55 /* chats */ = {
+			isa = PBXGroup;
+			children = (
+				27F967C01DCA8AAB00E58A55 /* ChatsViewController.h */,
+				27F967C11DCA8AAB00E58A55 /* ChatsViewController.m */,
+			);
+			path = chats;
+			sourceTree = "<group>";
+		};
+		27F967C21DCA8AAB00E58A55 /* contacts */ = {
+			isa = PBXGroup;
+			children = (
+				27F967C31DCA8AAB00E58A55 /* ContactsViewController.h */,
+				27F967C41DCA8AAB00E58A55 /* ContactsViewController.m */,
+			);
+			path = contacts;
+			sourceTree = "<group>";
+		};
+		27F967C81DCA8AAB00E58A55 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				27F967C91DCA8AAB00E58A55 /* ProfileViewController.h */,
+				27F967CA1DCA8AAB00E58A55 /* ProfileViewController.m */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
+		27F967D31DCA8B4600E58A55 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				27F967DA1DCA8C3200E58A55 /* Main.storyboard */,
+				27F967D41DCA8B4600E58A55 /* ViewController.h */,
+				27F967D51DCA8B4600E58A55 /* ViewController.m */,
+			);
+			name = main;
+			path = CustomChat/modules/main;
+			sourceTree = "<group>";
+		};
+		48F2179183FB8B423FD62219 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				745F74ED2B71A5094826349C /* libPods-CustomChat.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5778AA9F8F529069A7B237E3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				78B06963E54E45761E020E95 /* Pods-CustomChat.debug.xcconfig */,
+				0A2C08D4EFC707FBAC72422C /* Pods-CustomChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2736DADD1DB6BC5500E96EFC /* CustomChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2736DAF51DB6BC5600E96EFC /* Build configuration list for PBXNativeTarget "CustomChat" */;
+			buildPhases = (
+				363C400EC93B5AB1457D6BD6 /* [CP] Check Pods Manifest.lock */,
+				2736DADA1DB6BC5500E96EFC /* Sources */,
+				2736DADB1DB6BC5500E96EFC /* Frameworks */,
+				2736DADC1DB6BC5500E96EFC /* Resources */,
+				FE493132B86B159DB8FA73DB /* [CP] Embed Pods Frameworks */,
+				D5D147001AE795F8C06293D3 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CustomChat;
+			productName = CustomChat;
+			productReference = 2736DADE1DB6BC5500E96EFC /* CustomChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2736DAD61DB6BC5500E96EFC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = WilsonApps;
+				TargetAttributes = {
+					2736DADD1DB6BC5500E96EFC = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = R25C8V8UCD;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2736DAD91DB6BC5500E96EFC /* Build configuration list for PBXProject "CustomChat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2736DAD51DB6BC5500E96EFC;
+			productRefGroup = 2736DADF1DB6BC5500E96EFC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2736DADD1DB6BC5500E96EFC /* CustomChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2736DADC1DB6BC5500E96EFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27CC7FB31DC96A6700D4E299 /* Contents.json in Resources */,
+				2736DAF11DB6BC5600E96EFC /* LaunchScreen.storyboard in Resources */,
+				27CC7FB71DC96A6700D4E299 /* Contents.json in Resources */,
+				2736DAF91DB6BFFD00E96EFC /* GoogleService-Info.plist in Resources */,
+				27CC7FB51DC96A6700D4E299 /* ic_account_circle_2x.png in Resources */,
+				27CC7FB41DC96A6700D4E299 /* ic_account_circle.png in Resources */,
+				27CC7FB91DC96A6700D4E299 /* ic_chat_bubble_2x.png in Resources */,
+				27CC7FBB1DC96A6700D4E299 /* Contents.json in Resources */,
+				27CC7FBC1DC96A6700D4E299 /* ic_contacts.png in Resources */,
+				27CC7FBE1DC96A6700D4E299 /* ic_contacts_3x.png in Resources */,
+				27CC7FD01DC96A6700D4E299 /* splash_test.png in Resources */,
+				2736DAEE1DB6BC5600E96EFC /* Assets.xcassets in Resources */,
+				27CC7FCE1DC96A6700D4E299 /* profile_icon_9.png in Resources */,
+				27CC7FCF1DC96A6700D4E299 /* profile_icon_9.xcf in Resources */,
+				27CC7FBD1DC96A6700D4E299 /* ic_contacts_2x.png in Resources */,
+				27CC7FBA1DC96A6700D4E299 /* ic_chat_bubble_3x.png in Resources */,
+				27CC7FB81DC96A6700D4E299 /* ic_chat_bubble.png in Resources */,
+				27F967DB1DCA8C3200E58A55 /* Main.storyboard in Resources */,
+				27CC7FB61DC96A6700D4E299 /* ic_account_circle_3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		363C400EC93B5AB1457D6BD6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D5D147001AE795F8C06293D3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CustomChat/Pods-CustomChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE493132B86B159DB8FA73DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CustomChat/Pods-CustomChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2736DADA1DB6BC5500E96EFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27F967CE1DCA8AAB00E58A55 /* ProfileViewController.m in Sources */,
+				27F967D61DCA8B4600E58A55 /* ViewController.m in Sources */,
+				27F967CC1DCA8AAB00E58A55 /* ContactsViewController.m in Sources */,
+				2736DAE61DB6BC5600E96EFC /* AppDelegate.m in Sources */,
+				27F967BD1DCA896900E58A55 /* FirebaseHelper.m in Sources */,
+				2736DAE31DB6BC5600E96EFC /* main.m in Sources */,
+				27F967CB1DCA8AAB00E58A55 /* ChatsViewController.m in Sources */,
+				27F967D91DCA8BCF00E58A55 /* HomeViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2736DAEF1DB6BC5600E96EFC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2736DAF01DB6BC5600E96EFC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2736DAF31DB6BC5600E96EFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2736DAF41DB6BC5600E96EFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2736DAF61DB6BC5600E96EFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78B06963E54E45761E020E95 /* Pods-CustomChat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R25C8V8UCD;
+				INFOPLIST_FILE = CustomChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.wilson.CChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2736DAF71DB6BC5600E96EFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A2C08D4EFC707FBAC72422C /* Pods-CustomChat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R25C8V8UCD;
+				INFOPLIST_FILE = CustomChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.wilson.CChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2736DAD91DB6BC5500E96EFC /* Build configuration list for PBXProject "CustomChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2736DAF31DB6BC5600E96EFC /* Debug */,
+				2736DAF41DB6BC5600E96EFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2736DAF51DB6BC5600E96EFC /* Build configuration list for PBXNativeTarget "CustomChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2736DAF61DB6BC5600E96EFC /* Debug */,
+				2736DAF71DB6BC5600E96EFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2736DAD61DB6BC5500E96EFC /* Project object */;
+}
