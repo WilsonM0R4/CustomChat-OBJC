@@ -52,7 +52,7 @@
 
 }
 
--(void)signInWithEmail:(NSString *)email andPassword:(NSString *)password loginHandler:(void (^)(BOOL)) handler{
+-(void)signInWithEmail:(NSString *)email andPassword:(NSString *)password loginHandler:(void (^)(BOOL)) loginHandler{
 	
 	NSLog(@"attempting to execute login ...");
 	
@@ -61,8 +61,8 @@
 		if(user!=nil){
 			NSLog(@"user signed in is %@", [user email]);
 			
-			if(handler!=nil){
-				handler(YES);
+			if(loginHandler!=nil){
+				loginHandler(YES);
 			}
 			
 			}else if(error!=nil){
@@ -70,6 +70,14 @@
 		}
 		
 	}];
+}
+
+-(FIRDatabaseReference *)getDatabaseReference{
+	return [[FIRDatabase database] reference];
+}
+
+-(FIRUser *)getCurrentUser{
+	return [FIRAuth auth].currentUser;
 }
 
 -(void)signOff{

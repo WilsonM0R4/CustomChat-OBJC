@@ -15,10 +15,13 @@ typedef void (^loginHandler)(BOOL);
 
 @property loginHandler handler;
 
+
 +(id)sharedInstance;
 
 -(void)launchAuthListener;
 -(void)signInWithEmail:(NSString *)email andPassword:(NSString *)password loginHandler:(void (^)(BOOL)) handler;
+-(FIRDatabaseReference *)getDatabaseReference;
+-(FIRUser *)getCurrentUser;
 -(void)signOff;
 -(void)signUp;
 
