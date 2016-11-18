@@ -29,6 +29,7 @@
 		278896BB1DCB780200675816 /* ic_person_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278896A41DCB780200675816 /* ic_person_2x.png */; };
 		278896BC1DCB780200675816 /* ic_person_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278896A51DCB780200675816 /* ic_person_3x.png */; };
 		278896C11DCBA49700675816 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 278896C01DCBA49700675816 /* User.m */; };
+		27B17B3D1DD2896600AFAC31 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B17B3C1DD2896600AFAC31 /* EditProfileViewController.m */; };
 		27CC7FB31DC96A6700D4E299 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F901DC96A6700D4E299 /* Contents.json */; };
 		27CC7FB41DC96A6700D4E299 /* ic_account_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F911DC96A6700D4E299 /* ic_account_circle.png */; };
 		27CC7FB51DC96A6700D4E299 /* ic_account_circle_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CC7F921DC96A6700D4E299 /* ic_account_circle_2x.png */; };
@@ -82,6 +83,8 @@
 		278896A51DCB780200675816 /* ic_person_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_person_3x.png; sourceTree = "<group>"; };
 		278896BF1DCBA48B00675816 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		278896C01DCBA49700675816 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		27B17B3B1DD2896600AFAC31 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditProfileViewController.h; path = CustomChat/modules/home/profile/EditProfileViewController.h; sourceTree = SOURCE_ROOT; };
+		27B17B3C1DD2896600AFAC31 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditProfileViewController.m; path = CustomChat/modules/home/profile/EditProfileViewController.m; sourceTree = SOURCE_ROOT; };
 		27CC7F901DC96A6700D4E299 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		27CC7F911DC96A6700D4E299 /* ic_account_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_account_circle.png; sourceTree = "<group>"; };
 		27CC7F921DC96A6700D4E299 /* ic_account_circle_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_account_circle_2x.png; sourceTree = "<group>"; };
@@ -339,6 +342,8 @@
 		27F967C81DCA8AAB00E58A55 /* profile */ = {
 			isa = PBXGroup;
 			children = (
+				27B17B3B1DD2896600AFAC31 /* EditProfileViewController.h */,
+				27B17B3C1DD2896600AFAC31 /* EditProfileViewController.m */,
 				27F967C91DCA8AAB00E58A55 /* ProfileViewController.h */,
 				27F967CA1DCA8AAB00E58A55 /* ProfileViewController.m */,
 			);
@@ -530,6 +535,7 @@
 			files = (
 				27F967CE1DCA8AAB00E58A55 /* ProfileViewController.m in Sources */,
 				27F967D61DCA8B4600E58A55 /* ViewController.m in Sources */,
+				27B17B3D1DD2896600AFAC31 /* EditProfileViewController.m in Sources */,
 				278896C11DCBA49700675816 /* User.m in Sources */,
 				27F967CC1DCA8AAB00E58A55 /* ContactsViewController.m in Sources */,
 				2736DAE61DB6BC5600E96EFC /* AppDelegate.m in Sources */,

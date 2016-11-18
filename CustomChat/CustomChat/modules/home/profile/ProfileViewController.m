@@ -8,6 +8,8 @@
 
 #import "ProfileViewController.h"
 #import "FirebaseHelper.h"
+#import "User.h"
+#import "EditProfileViewController.h"
 
 @interface ProfileViewController ()
 - (void)signOff;
@@ -57,8 +59,72 @@ NSMutableArray *sectionsArray;
 }
 
 -(void)editProfile{
+	
+	NSLog(@"formated email is %@", [User formatEmail:[[FIRAuth auth] currentUser].email]);
+	
+	EditProfileViewController *editProfileController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditProfileViewController"];
+	
+	[self presentViewController:editProfileController animated:YES completion:nil];
+}
+
+-(void)changheUserState{
+	
+	
+	UIAlertController *statusAlert = [UIAlertController alertControllerWithTitle:@"estado" message:@"digita un estado" preferredStyle:UIAlertControllerStyleAlert];
+	
+	UIAlertAction *actionSend = [UIAlertAction actionWithTitle:@"send" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		NSLog(@"send pressed");
 		
-	[[[FirebaseHelper sharedInstance] getDatabaseReference] child:@""];
+		NSString *status = [statusAlert textFields][0].text;
+		NSString *formatedEmail = [User formatEmail:[[FirebaseHelper sharedInstance] getCurrentUser].email];
+		
+		[[[[[[FirebaseHelper sharedInstance] getDatabaseReference] child:USER_EXTRA_DATA_PATH] child:formatedEmail] child:USER_STATUS_PATH] setValue:status] ;
+
+		
+		[statusAlert dismissViewControllerAnimated:YES completion:nil];
+	}];
+	
+	UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		NSLog(@"cancel pressed");
+		[statusAlert dismissViewControllerAnimated:YES completion:nil];
+	}];
+	
+	[statusAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+		textField.placeholder = @"estado";
+	}];
+	
+	[statusAlert addAction:actionCancel];
+	[statusAlert addAction:actionSend];
+	
+	[self presentViewController:statusAlert animated:YES completion:nil];
+	
+}
+
+-(void)changeAvailability{
+	
+	NSString *formatedEmail = [User formatEmail:[[FirebaseHelper sharedInstance] getCurrentUser].email];
+	FIRDatabaseReference *reference = [[[[[FirebaseHelper sharedInstance] getDatabaseReference] child:USER_EXTRA_DATA_PATH] child:formatedEmail] child:USER_AVAILABILITY_PATH];
+	
+	UIAlertController *availabilityAlert = [UIAlertController alertControllerWithTitle:@"estado" message:@"digita un estado" preferredStyle:UIAlertControllerStyleAlert];
+	
+	UIAlertAction *actionSend = [UIAlertAction actionWithTitle:@"conectado" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		
+		[reference setValue:@"online"];
+			
+		[availabilityAlert dismissViewControllerAnimated:YES completion:nil];
+	}];
+	
+	UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"desconectado" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		
+		[reference setValue:@"offline"];
+		
+		[availabilityAlert dismissViewControllerAnimated:YES completion:nil];
+	}];
+	
+	[availabilityAlert addAction:actionCancel];
+	[availabilityAlert addAction:actionSend];
+	
+	[self presentViewController:availabilityAlert animated:YES completion:nil];
 }
 
 - (void)signOff {
@@ -98,9 +164,11 @@ NSMutableArray *sectionsArray;
 			break;
 		case 1:
 			NSLog(@"user state selected!");
+			[self changheUserState];
 			break;
 		case 2:
 			NSLog(@"availability selected!");
+			[self changeAvailability];
 			break;
 		case 3:
 			NSLog(@"sign out selected!");
@@ -108,7 +176,7 @@ NSMutableArray *sectionsArray;
 			break;
   default:
 			break;
-	}
+	}	
 	
 }
 

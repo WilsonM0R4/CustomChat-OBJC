@@ -9,6 +9,8 @@
 #import <Firebase/Firebase.h>
 #import <Foundation/Foundation.h>
 
+#define	USER_EXTRA_DATA_PATH @"user_extra_data"
+
 typedef void (^loginHandler)(BOOL);
 
 @interface FirebaseHelper : NSObject
@@ -19,6 +21,7 @@ typedef void (^loginHandler)(BOOL);
 +(id)sharedInstance;
 
 -(void)launchAuthListener;
+-(void)launchDatabaseListener;
 -(void)signInWithEmail:(NSString *)email andPassword:(NSString *)password loginHandler:(void (^)(BOOL)) handler;
 -(FIRDatabaseReference *)getDatabaseReference;
 -(FIRUser *)getCurrentUser;

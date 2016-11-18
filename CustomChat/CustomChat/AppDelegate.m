@@ -24,6 +24,7 @@
 	//configure firebase
 	[FIRApp configure];
 	[[FirebaseHelper sharedInstance] launchAuthListener];
+	//[[FirebaseHelper sharedInstance] launchDatabaseListener];
 	
 	/**
 	 * used for set programmatically a root viewController

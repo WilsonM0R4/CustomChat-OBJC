@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FirebaseHelper.h"
+#import "User.h"
 
 @implementation FirebaseHelper
 
@@ -32,6 +33,9 @@
 		
 		if(user!=nil){
 			NSLog(@"user loged in!, is %@",[user email]);
+			
+			[self launchDatabaseListener];
+			
 			if(handler!=nil){
 				handler(YES);
 			}
@@ -44,6 +48,18 @@
 			
 			
 		}
+		
+	}];
+}
+
+-(void)launchDatabaseListener{
+	
+	NSLog(@"formated email is %@", [User formatEmail:[[FIRAuth auth] currentUser].email]);
+	[[[[[FirebaseHelper sharedInstance] getDatabaseReference] child:USER_EXTRA_DATA_PATH] child:[User formatEmail:[[FIRAuth auth] currentUser].email]] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+		
+		NSDictionary *response = snapshot.value;
+		
+		NSLog(@"response is %@",response);
 		
 	}];
 }
@@ -65,8 +81,11 @@
 				loginHandler(YES);
 			}
 			
-			}else if(error!=nil){
-			NSLog(@"an eror have occurred, it is %@",error);
+		}else if(error!=nil){
+			NSLog(@"an error have occurred, it is %@",error);
+			if(loginHandler!=nil){
+				loginHandler(NO);
+			}
 		}
 		
 	}];

@@ -54,6 +54,17 @@
 			[self launchHomeView];
 		}else{
 			NSLog(@"cannot present new view controller");
+			UIAlertController *alertLogin = [UIAlertController alertControllerWithTitle:@"Datos incorrectos" message:@"sus datos son incorrectos, por favor verifiquelos e intentelo de nuevo" preferredStyle:UIAlertControllerStyleAlert];
+			
+			UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"entendido" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+				
+				[alertLogin dismissViewControllerAnimated:YES completion:nil];
+				
+			}];
+			
+			[alertLogin addAction:actionOk];
+			
+			[self presentViewController:alertLogin animated:YES completion:nil];
 		}
 	}];
 }
