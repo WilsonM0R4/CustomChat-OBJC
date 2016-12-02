@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "FirebaseHelper.h"
 #import "User.h"
+#import "ContactsViewController.h"
 
 @implementation FirebaseHelper
 
-@synthesize handler;
+@synthesize handler, response;
 
 +(id)sharedInstance{
 	
@@ -24,11 +25,13 @@
 	return helper;
 }
 
--(id)init{	
+-(id)init{
+	response = [[NSMutableDictionary alloc] init];
 	return self;
 }
 
 -(void)launchAuthListener{
+	
 	[[FIRAuth auth] addAuthStateDidChangeListener:^(FIRAuth * _Nonnull auth, FIRUser * _Nullable user) {
 		
 		if(user!=nil){
@@ -56,8 +59,8 @@
 	
 	NSLog(@"formated email is %@", [User formatEmail:[[FIRAuth auth] currentUser].email]);
 	[[[[[FirebaseHelper sharedInstance] getDatabaseReference] child:USER_EXTRA_DATA_PATH] child:[User formatEmail:[[FIRAuth auth] currentUser].email]] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-		
-		NSDictionary *response = snapshot.value;
+		//response = snapshot.value;
+		[response setDictionary:snapshot.value];
 		
 		NSLog(@"response is %@",response);
 		
@@ -65,7 +68,7 @@
 }
 
 -(void)signUp{
-
+	
 }
 
 -(void)signInWithEmail:(NSString *)email andPassword:(NSString *)password loginHandler:(void (^)(BOOL)) loginHandler{
@@ -97,6 +100,60 @@
 
 -(FIRUser *)getCurrentUser{
 	return [FIRAuth auth].currentUser;
+}
+
+-(NSString *)getCurrentUserState{
+	
+	/*[[[[self getDatabaseReference] child:USER_EXTRA_DATA_PATH] child:[User formatEmail:[FIRAuth auth].currentUser.email]] child:USER_STATUS_PATH];*/
+	
+	[[[[[FirebaseHelper sharedInstance] getDatabaseReference] child:USER_EXTRA_DATA_PATH] child:[User formatEmail:[[FIRAuth auth] currentUser].email]] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+		//response = snapshot.value;
+		[response setDictionary:snapshot.value]; 				
+		
+	}];
+	
+	NSLog(@"state here  is %@",response[USER_STATUS_PATH]);
+	return response[USER_STATUS_PATH];
+}
+
+-(void)bringContacts{
+	
+	NSMutableArray *contacts = [[NSMutableArray alloc] init];
+	
+	[[[[[FirebaseHelper sharedInstance] getDatabaseReference] child:CONTACTS_PATH] child:[User formatEmail:[[FIRAuth auth] currentUser].email]] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+		
+		[contacts addObjectsFromArray: [snapshot.value allValues]];
+		
+		//[ContactsViewController onContactsFound:[snapshot.value allValues]];
+		
+		if([_domainDelegate respondsToSelector:@selector(onContactsFound:)]){
+			[_domainDelegate onContactsFound:contacts];
+		}
+		NSLog(@"contacts are %@",contacts);
+	}];
+	
+	NSLog(@"contacts here are %@",contacts);
+	
+}
+
+-(void)changeUserState:(NSString *)userState forUserWithEmail:(NSString *)email{
+	
+	[[[[[self getDatabaseReference] child:USER_EXTRA_DATA_PATH] child:email] child:USER_STATUS_PATH] setValue:userState] ;
+	
+}
+
+-(void)changeUsername:(NSString *)username forUserWithEmail:(NSString *)email{
+	[[[[[self getDatabaseReference] child:USER_EXTRA_DATA_PATH] child:email] child:USERNAME_PATH] setValue:username] ;
+}
+
+-(void)changePassword:(NSString *)password {
+	[[[FIRAuth auth] currentUser] updatePassword:password completion:^(NSError * _Nullable error) {
+		if(error){
+			NSLog(@"can't change your password");
+		}else{
+			NSLog(@"password changed");
+		}
+	}];
 }
 
 -(void)signOff{

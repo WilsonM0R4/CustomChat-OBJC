@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIView *imageContainerView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageview;
 @property (weak, nonatomic) IBOutlet UITableView *tableProfile;
+@property (weak, nonatomic) IBOutlet UILabel *userEmailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 
 @end
 
@@ -37,6 +39,13 @@ NSMutableArray *sectionsArray;
 															@{@"title":@"estado",@"image":@"ic_insert_emoticon"},
 															@{@"title":@"disponibilidad",@"image":@"ic_person"},
 															@{@"title":@"cerrar sesión",@"image":@"ic_exit_to_app"}]];
+	
+	
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+	self.userEmailLabel.text = [[FirebaseHelper sharedInstance] getCurrentUser].email;
+	self.stateLabel.text = [[FirebaseHelper sharedInstance] getCurrentUserState];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,8 +87,7 @@ NSMutableArray *sectionsArray;
 		NSString *status = [statusAlert textFields][0].text;
 		NSString *formatedEmail = [User formatEmail:[[FirebaseHelper sharedInstance] getCurrentUser].email];
 		
-		[[[[[[FirebaseHelper sharedInstance] getDatabaseReference] child:USER_EXTRA_DATA_PATH] child:formatedEmail] child:USER_STATUS_PATH] setValue:status] ;
-
+		[[FirebaseHelper sharedInstance ] changeUserState:status forUserWithEmail:formatedEmail];
 		
 		[statusAlert dismissViewControllerAnimated:YES completion:nil];
 	}];

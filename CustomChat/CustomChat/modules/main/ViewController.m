@@ -65,6 +65,7 @@
 			[alertLogin addAction:actionOk];
 			
 			[self presentViewController:alertLogin animated:YES completion:nil];
+		
 		}
 	}];
 }
@@ -73,7 +74,7 @@
 
 -(void)launchHomeView{
 	HomeViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
-	[self presentViewController:controller animated:YES completion:nil];
+	[self.navigationController presentViewController:controller animated:YES completion:nil];	
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

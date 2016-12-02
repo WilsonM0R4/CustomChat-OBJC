@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FirebaseHelper.h"
 
-@interface ContactsViewController : UIViewController
+@interface ContactsViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,DomainProtocol>
+
 
 @end
