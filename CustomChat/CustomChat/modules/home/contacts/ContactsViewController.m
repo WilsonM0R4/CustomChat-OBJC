@@ -7,6 +7,7 @@
 //
 
 #import "ContactsViewController.h"
+#import "InfoContactViewController.h"
 
 @interface ContactsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
@@ -47,6 +48,10 @@ NSMutableArray* contacts;
 		
 		NSLog(@"ver ha sido presionado");
 		[controller dismissViewControllerAnimated:YES completion:nil];
+		
+		InfoContactViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contactDetailVC"];
+		
+		[self presentViewController:viewController animated:YES completion:nil];
 	}];
 	
 	UIAlertAction *actionNewMesage = [UIAlertAction actionWithTitle:@"mensaje" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

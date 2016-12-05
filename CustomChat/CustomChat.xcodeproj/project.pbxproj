@@ -12,6 +12,7 @@
 		2736DAEE1DB6BC5600E96EFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2736DAED1DB6BC5600E96EFC /* Assets.xcassets */; };
 		2736DAF11DB6BC5600E96EFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2736DAEF1DB6BC5600E96EFC /* LaunchScreen.storyboard */; };
 		2736DAF91DB6BFFD00E96EFC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2736DAF81DB6BFFC00E96EFC /* GoogleService-Info.plist */; };
+		2737537E1DF5D3090004B7AB /* InfoContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737537D1DF5D3090004B7AB /* InfoContactViewController.m */; };
 		278896AB1DCB780200675816 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 278896901DCB780200675816 /* Contents.json */; };
 		278896AC1DCB780200675816 /* ic_exit_to_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 278896911DCB780200675816 /* ic_exit_to_app.png */; };
 		278896AD1DCB780200675816 /* ic_exit_to_app_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278896921DCB780200675816 /* ic_exit_to_app_2x.png */; };
@@ -65,6 +66,8 @@
 		2736DAF01DB6BC5600E96EFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2736DAF21DB6BC5600E96EFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2736DAF81DB6BFFC00E96EFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2737537C1DF5D3090004B7AB /* InfoContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoContactViewController.h; sourceTree = "<group>"; };
+		2737537D1DF5D3090004B7AB /* InfoContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoContactViewController.m; sourceTree = "<group>"; };
 		278896901DCB780200675816 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		278896911DCB780200675816 /* ic_exit_to_app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_exit_to_app.png; sourceTree = "<group>"; };
 		278896921DCB780200675816 /* ic_exit_to_app_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_exit_to_app_2x.png; sourceTree = "<group>"; };
@@ -175,6 +178,13 @@
 			);
 			name = launch;
 			path = CustomChat;
+			sourceTree = "<group>";
+		};
+		2737537F1DF604550004B7AB /* cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = cell;
 			sourceTree = "<group>";
 		};
 		2788968F1DCB780200675816 /* ic_exit_to_app.imageset */ = {
@@ -333,8 +343,11 @@
 		27F967C21DCA8AAB00E58A55 /* contacts */ = {
 			isa = PBXGroup;
 			children = (
+				2737537F1DF604550004B7AB /* cell */,
 				27F967C31DCA8AAB00E58A55 /* ContactsViewController.h */,
 				27F967C41DCA8AAB00E58A55 /* ContactsViewController.m */,
+				2737537C1DF5D3090004B7AB /* InfoContactViewController.h */,
+				2737537D1DF5D3090004B7AB /* InfoContactViewController.m */,
 			);
 			path = contacts;
 			sourceTree = "<group>";
@@ -542,6 +555,7 @@
 				27F967BD1DCA896900E58A55 /* FirebaseHelper.m in Sources */,
 				2736DAE31DB6BC5600E96EFC /* main.m in Sources */,
 				27F967CB1DCA8AAB00E58A55 /* ChatsViewController.m in Sources */,
+				2737537E1DF5D3090004B7AB /* InfoContactViewController.m in Sources */,
 				27F967D91DCA8BCF00E58A55 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
