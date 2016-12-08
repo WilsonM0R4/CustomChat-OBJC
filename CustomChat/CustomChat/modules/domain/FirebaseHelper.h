@@ -11,6 +11,7 @@
 
 #define	USER_EXTRA_DATA_PATH @"user_extra_data"
 #define CONTACTS_PATH @"contacts"
+#define CONTACT_KEY_STRING @"contact_key_"
 
 typedef void (^loginHandler)(BOOL);
 
@@ -18,6 +19,8 @@ typedef void (^loginHandler)(BOOL);
 
 @optional
 -(void)onContactsFound:(NSArray *)foundContacts;
+-(void)onExtraDataFound:(NSDictionary *)extraData forUserEmail:(NSString *)email;
+-(void)onContactRemoved;
 
 @end
 
@@ -35,10 +38,12 @@ typedef void (^loginHandler)(BOOL);
 -(FIRDatabaseReference *)getDatabaseReference;
 -(FIRUser *)getCurrentUser;
 -(NSString *)getCurrentUserState;
+-(void)getExtraDataForUser:(NSString *)user;
 -(void)bringContacts;
 -(void)changeUserState:(NSString *)userState forUserWithEmail:(NSString *)email;
 -(void)changeUsername:(NSString *)username forUserWithEmail:(NSString *)email;
 -(void)changePassword:(NSString *)password;
+-(void)removeContact:(NSString *)contact;
 -(void)signOff;
 -(void)signUp;
 

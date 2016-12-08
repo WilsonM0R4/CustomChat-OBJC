@@ -8,6 +8,7 @@
 
 #import "ContactsViewController.h"
 #import "InfoContactViewController.h"
+#import "User.h"
 
 @interface ContactsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
@@ -19,6 +20,7 @@
 @synthesize contactsTableView;
 
 NSMutableArray* contacts;
+UIActivityIndicatorView *loaderView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +34,12 @@ NSMutableArray* contacts;
 	[[FirebaseHelper sharedInstance] bringContacts];
 	NSLog(@"received contacts :%@",contacts);
     // Do any additional setup after loading the view.
+	
+	loaderView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+	[loaderView setBackgroundColor:[UIColor grayColor]];
+	[loaderView setFrame:[self.view frame]];
+	
+	[User showLoader:loaderView inView:self.view];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,6 +47,10 @@ NSMutableArray* contacts;
     // Dispose of any resources that can be recreated.
 }
 
+-(void)deleteContact:(NSString *)contactEmail{
+	NSLog(@"contact: %@",contactEmail);
+	[[FirebaseHelper sharedInstance] removeContact:contactEmail];
+}
 
 -(void)contactAlertSheetWithTitle:(NSString *)title{
 	
@@ -51,7 +63,9 @@ NSMutableArray* contacts;
 		
 		InfoContactViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contactDetailVC"];
 		
+		viewController.contactEmail = title;
 		[self presentViewController:viewController animated:YES completion:nil];
+		
 	}];
 	
 	UIAlertAction *actionNewMesage = [UIAlertAction actionWithTitle:@"mensaje" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -62,6 +76,11 @@ NSMutableArray* contacts;
 	UIAlertAction *actionDelete = [UIAlertAction actionWithTitle:@"eliminar" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 		
 		NSLog(@"eliminar ha sido presionado");
+		
+		NSLog(@"contact to delete is %@",title);
+		
+		[self deleteContact:[User formatEmail:title]];
+		
 		[controller dismissViewControllerAnimated:YES completion:nil];
 	}];
 	
@@ -105,9 +124,16 @@ NSMutableArray* contacts;
 #pragma mark DomainDelegate
 
 -(void)onContactsFound:(NSArray *)foundContacts{
+	
+	[User hideLoader:loaderView];
+	
 	[contacts addObjectsFromArray:foundContacts];
 	[contactsTableView reloadData];
 	NSLog(@"found contacts %@",foundContacts);
+}
+
+-(void)onContactRemoved{
+	//[self.contactsTableView reloadData];
 }
 
 #pragma mark tableView datasource

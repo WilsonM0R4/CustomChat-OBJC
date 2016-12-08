@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2730366E1DF877F500660339 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2730366D1DF877F500660339 /* ContactTableViewCell.m */; };
+		273036701DF878B200660339 /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2730366F1DF878B200660339 /* ContactsCell.xib */; };
 		2736DAE31DB6BC5600E96EFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736DAE21DB6BC5600E96EFC /* main.m */; };
 		2736DAE61DB6BC5600E96EFC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736DAE51DB6BC5600E96EFC /* AppDelegate.m */; };
 		2736DAEE1DB6BC5600E96EFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2736DAED1DB6BC5600E96EFC /* Assets.xcassets */; };
@@ -58,6 +60,9 @@
 
 /* Begin PBXFileReference section */
 		0A2C08D4EFC707FBAC72422C /* Pods-CustomChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomChat/Pods-CustomChat.release.xcconfig"; sourceTree = "<group>"; };
+		2730366C1DF877F500660339 /* ContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTableViewCell.h; sourceTree = "<group>"; };
+		2730366D1DF877F500660339 /* ContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
+		2730366F1DF878B200660339 /* ContactsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsCell.xib; sourceTree = "<group>"; };
 		2736DADE1DB6BC5500E96EFC /* CustomChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2736DAE21DB6BC5600E96EFC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2736DAE41DB6BC5600E96EFC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CustomChat/AppDelegate.h; sourceTree = "<group>"; };
@@ -183,6 +188,9 @@
 		2737537F1DF604550004B7AB /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				2730366C1DF877F500660339 /* ContactTableViewCell.h */,
+				2730366D1DF877F500660339 /* ContactTableViewCell.m */,
+				2730366F1DF878B200660339 /* ContactsCell.xib */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -477,6 +485,7 @@
 				278896B51DCB780200675816 /* Contents.json in Resources */,
 				27CC7FBE1DC96A6700D4E299 /* ic_contacts_3x.png in Resources */,
 				278896B71DCB780200675816 /* ic_mode_edit_2x.png in Resources */,
+				273036701DF878B200660339 /* ContactsCell.xib in Resources */,
 				278896B41DCB780200675816 /* ic_insert_emoticon_3x.png in Resources */,
 				278896B81DCB780200675816 /* ic_mode_edit_3x.png in Resources */,
 				27CC7FD01DC96A6700D4E299 /* splash_test.png in Resources */,
@@ -554,6 +563,7 @@
 				2736DAE61DB6BC5600E96EFC /* AppDelegate.m in Sources */,
 				27F967BD1DCA896900E58A55 /* FirebaseHelper.m in Sources */,
 				2736DAE31DB6BC5600E96EFC /* main.m in Sources */,
+				2730366E1DF877F500660339 /* ContactTableViewCell.m in Sources */,
 				27F967CB1DCA8AAB00E58A55 /* ChatsViewController.m in Sources */,
 				2737537E1DF5D3090004B7AB /* InfoContactViewController.m in Sources */,
 				27F967D91DCA8BCF00E58A55 /* HomeViewController.m in Sources */,

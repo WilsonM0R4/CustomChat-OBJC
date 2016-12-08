@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #define USER_AVAILABILITY_PATH @"availability"
 #define USER_PROFILE_IMAGE_PATH @"profile_image"
@@ -22,5 +23,7 @@
 @property (weak, nonatomic) NSString *status;
 
 +(NSString *)formatEmail:(NSString *)email;
++(void)showLoader:(UIActivityIndicatorView *)indicatorView inView:(UIView *)parentView;
++(void)hideLoader:(UIActivityIndicatorView *)indicatorView;
 
 @end

@@ -23,4 +23,14 @@
 	return [email stringByReplacingOccurrencesOfString:@"." withString:@"_"];
 }
 
++(void)showLoader:(UIActivityIndicatorView *)indicatorView inView:(UIView *)parentView{
+	[parentView addSubview:indicatorView];
+	[indicatorView startAnimating];
+}
+
++(void)hideLoader:(UIActivityIndicatorView *)indicatorView{
+	[indicatorView stopAnimating];
+	[indicatorView removeFromSuperview];
+}
+
 @end

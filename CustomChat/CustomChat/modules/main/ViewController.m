@@ -21,9 +21,17 @@
 
 @implementation ViewController
 
+
+UIActivityIndicatorView *loader;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+	
+	loader = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+	[loader setFrame:self.view.frame];
+	[loader setHidden:NO];
+	[loader setBackgroundColor:[UIColor grayColor]];
+	
 	
 	[[FirebaseHelper sharedInstance] setHandler: ^(BOOL logedIn){
 		if(logedIn){
@@ -40,6 +48,15 @@
 	// Dispose of any resources that can be recreated.
 }
 
+-(void)showLoader{
+	[self.view addSubview:loader];
+	[loader startAnimating];
+}
+
+-(void)hideLoader{
+	[loader stopAnimating];
+	[loader removeFromSuperview];
+}
 
 - (IBAction)loginPressed:(id)sender {
 	
@@ -47,16 +64,20 @@
 	NSString *password = self.tfPassword.text;
 	
 	NSLog(@"login pressed!, %@, %@", email, password);
-		
+	
+	[self showLoader];
 	
 	[[FirebaseHelper sharedInstance] signInWithEmail:email andPassword:password loginHandler:^(BOOL logedIn) {
 		if(logedIn){
+			[self hideLoader];
 			[self launchHomeView];
 		}else{
 			NSLog(@"cannot present new view controller");
 			UIAlertController *alertLogin = [UIAlertController alertControllerWithTitle:@"Datos incorrectos" message:@"sus datos son incorrectos, por favor verifiquelos e intentelo de nuevo" preferredStyle:UIAlertControllerStyleAlert];
 			
 			UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"entendido" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+				
+				[self hideLoader];
 				
 				[alertLogin dismissViewControllerAnimated:YES completion:nil];
 				

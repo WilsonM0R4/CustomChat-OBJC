@@ -10,6 +10,7 @@
 #import "FirebaseHelper.h"
 #import "User.h"
 #import "ContactsViewController.h"
+#import "InfoContactViewController.h"
 
 @implementation FirebaseHelper
 
@@ -116,6 +117,22 @@
 	return response[USER_STATUS_PATH];
 }
 
+-(void)getExtraDataForUser:(NSString *)user{
+	
+	NSLog(@"contact is %@",user);
+	
+	[[[[self getDatabaseReference] child:USER_EXTRA_DATA_PATH] child:[User formatEmail:user] ] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+		
+		NSLog(@"extra data is %@",snapshot.value);
+		
+		if([self.domainDelegate respondsToSelector:@selector(onExtraDataFound: forUserEmail:)]){
+			[_domainDelegate onExtraDataFound:snapshot.value forUserEmail:user];
+		}
+		
+	}];
+	
+}
+
 -(void)bringContacts{
 	
 	NSMutableArray *contacts = [[NSMutableArray alloc] init];
@@ -128,6 +145,9 @@
 		
 		if([_domainDelegate respondsToSelector:@selector(onContactsFound:)]){
 			[_domainDelegate onContactsFound:contacts];
+			NSLog(@"delegate responds to selector");
+		}else{
+			NSLog(@"delegate does not responds to selector");
 		}
 		NSLog(@"contacts are %@",contacts);
 	}];
@@ -154,6 +174,25 @@
 			NSLog(@"password changed");
 		}
 	}];
+}
+
+-(void)removeContact:(NSString *)contact{
+	
+	NSString* contactPath = [CONTACT_KEY_STRING stringByAppendingString:contact];
+	
+	[[[[[self getDatabaseReference] child: CONTACTS_PATH]child:[User formatEmail:[[FIRAuth auth] currentUser].email]] child:contactPath] setValue:nil withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+		
+		if(error!=nil){
+			NSLog(@"somethig went wrong, cannot remove contact: %@",error.userInfo);
+		}else if(ref!=nil){
+			NSLog(@"contact has been removed");
+			
+			if([_domainDelegate respondsToSelector:@selector(onContactRemoved)]){
+				[self.domainDelegate onContactRemoved];
+			}
+		}
+		
+	}] ;
 }
 
 -(void)signOff{
