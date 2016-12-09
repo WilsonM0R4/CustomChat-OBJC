@@ -127,7 +127,9 @@ UIActivityIndicatorView *loaderView;
 	
 	[User hideLoader:loaderView];
 	
+	[contacts removeAllObjects];
 	[contacts addObjectsFromArray:foundContacts];
+	
 	[contactsTableView reloadData];
 	NSLog(@"found contacts %@",foundContacts);
 }
@@ -155,6 +157,5 @@ UIActivityIndicatorView *loaderView;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	[self contactAlertSheetWithTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
 }
-
 
 @end
