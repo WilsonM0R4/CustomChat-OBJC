@@ -110,7 +110,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iHZ-vr-PoQ">
-                                <rect key="frame" x="8" y="28" width="359" height="582"/>
+                                <rect key="frame" x="8" y="80" width="359" height="530"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" textLabel="2KI-pm-wPM" imageView="6bK-8q-uXz" rowHeight="77" style="IBUITableViewCellStyleDefault" id="efO-ab-zW7">
@@ -136,18 +136,29 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="zxb-Ey-1MF">
+                                <rect key="frame" x="8" y="28" width="359" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="JsI-mI-WuU"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iHZ-vr-PoQ" firstAttribute="leading" secondItem="hKQ-uV-NPQ" secondAttribute="leading" constant="8" id="5ub-bM-cxe"/>
-                            <constraint firstItem="eb8-mm-rFa" firstAttribute="top" secondItem="iHZ-vr-PoQ" secondAttribute="bottom" constant="8" id="fZG-7Q-vir"/>
-                            <constraint firstItem="iHZ-vr-PoQ" firstAttribute="top" secondItem="jRt-XH-EEE" secondAttribute="bottom" constant="8" id="ti8-9d-Y0B"/>
-                            <constraint firstAttribute="trailing" secondItem="iHZ-vr-PoQ" secondAttribute="trailing" constant="8" id="wJF-dA-2Yj"/>
+                            <constraint firstAttribute="trailing" secondItem="iHZ-vr-PoQ" secondAttribute="trailing" constant="8" id="6bv-Pw-G4A"/>
+                            <constraint firstItem="eb8-mm-rFa" firstAttribute="top" secondItem="iHZ-vr-PoQ" secondAttribute="bottom" constant="8" id="8xf-j3-Hbp"/>
+                            <constraint firstAttribute="trailing" secondItem="zxb-Ey-1MF" secondAttribute="trailing" constant="8" id="9sI-n9-OR2"/>
+                            <constraint firstItem="iHZ-vr-PoQ" firstAttribute="top" secondItem="zxb-Ey-1MF" secondAttribute="bottom" constant="8" id="C61-8M-sYW"/>
+                            <constraint firstItem="zxb-Ey-1MF" firstAttribute="leading" secondItem="hKQ-uV-NPQ" secondAttribute="leading" constant="8" id="YVi-ig-mrP"/>
+                            <constraint firstItem="zxb-Ey-1MF" firstAttribute="top" secondItem="jRt-XH-EEE" secondAttribute="bottom" constant="8" id="eHE-u7-9xh"/>
+                            <constraint firstItem="iHZ-vr-PoQ" firstAttribute="leading" secondItem="hKQ-uV-NPQ" secondAttribute="leading" constant="8" id="oQg-Mm-1tu"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="contactos" image="ic_contacts.png" selectedImage="ic_contacts.png" id="gez-b0-5Dy"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="contactsSearchBar" destination="zxb-Ey-1MF" id="a4Q-sh-PGI"/>
                         <outlet property="contactsTableView" destination="iHZ-vr-PoQ" id="pb8-iI-TBQ"/>
                     </connections>
                 </viewController>
@@ -566,10 +577,35 @@
                     <view key="view" contentMode="scaleToFill" id="oSb-X1-89y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jx3-f8-nJL">
+                                <rect key="frame" x="8" y="28" width="359" height="582"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="vaC-CJ-uZI" customClass="ChatTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="359" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vaC-CJ-uZI" id="Wrp-Fs-WDD">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b2R-oU-5II" firstAttribute="top" secondItem="Jx3-f8-nJL" secondAttribute="bottom" constant="8" id="1JK-jF-IAx"/>
+                            <constraint firstItem="Jx3-f8-nJL" firstAttribute="top" secondItem="qXx-tq-LVE" secondAttribute="bottom" constant="8" id="7KJ-Jq-zF6"/>
+                            <constraint firstAttribute="trailing" secondItem="Jx3-f8-nJL" secondAttribute="trailing" constant="8" id="Kg8-9K-opr"/>
+                            <constraint firstItem="Jx3-f8-nJL" firstAttribute="leading" secondItem="oSb-X1-89y" secondAttribute="leading" constant="8" id="jHZ-0X-w8O"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="conversaciones" image="ic_chat_bubble.png" selectedImage="ic_chat_bubble.png" id="APr-mc-P2T"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="chatsTable" destination="Jx3-f8-nJL" id="BtM-Z2-n7a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SK6-r4-gpO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

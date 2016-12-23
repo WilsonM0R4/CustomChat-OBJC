@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatTableViewCell">
+            <connections>
+                <outlet property="contactImageView" destination="It1-i7-enO" id="yzW-Oe-5WK"/>
+                <outlet property="subtitle" destination="bOb-3n-iIS" id="Gjn-G4-ROE"/>
+                <outlet property="title" destination="qrU-9M-vMn" id="YZX-5q-61z"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="KGk-i7-Jjw" customClass="ChatTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="444" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="444" height="71"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="It1-i7-enO">
+                        <rect key="frame" x="0.0" y="0.0" width="83" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="72" id="Wro-Xp-nTQ"/>
+                            <constraint firstAttribute="width" constant="83" id="fFS-eX-hsd"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrU-9M-vMn">
+                        <rect key="frame" x="91" y="8" width="345" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="H3o-a9-F4C"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contact message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOb-3n-iIS">
+                        <rect key="frame" x="91" y="42" width="345" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="7Vr-yr-7Nz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="qrU-9M-vMn" secondAttribute="trailing" constant="8" id="0Yh-Ry-ejd"/>
+                    <constraint firstAttribute="trailing" secondItem="bOb-3n-iIS" secondAttribute="trailing" constant="8" id="9OI-lL-WUj"/>
+                    <constraint firstItem="qrU-9M-vMn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="CQK-UA-wdr"/>
+                    <constraint firstItem="qrU-9M-vMn" firstAttribute="leading" secondItem="It1-i7-enO" secondAttribute="trailing" constant="8" id="DU4-a4-oCl"/>
+                    <constraint firstItem="It1-i7-enO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IXU-pK-r8c"/>
+                    <constraint firstAttribute="bottom" secondItem="bOb-3n-iIS" secondAttribute="bottom" constant="8" id="eQ5-8X-Fxk"/>
+                    <constraint firstItem="It1-i7-enO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rJa-TL-BOs"/>
+                    <constraint firstItem="bOb-3n-iIS" firstAttribute="leading" secondItem="It1-i7-enO" secondAttribute="trailing" constant="8" id="ztV-gJ-jmw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="51" y="70"/>
+        </tableViewCell>
+    </objects>
+</document>

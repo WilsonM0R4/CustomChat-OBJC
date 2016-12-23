@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FirebaseHelper.h"
 
-@interface ChatsViewController : UIViewController
+@interface ChatsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,DomainProtocol>
 
 @end

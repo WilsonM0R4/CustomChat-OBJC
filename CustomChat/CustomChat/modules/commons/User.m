@@ -33,4 +33,12 @@
 	[indicatorView removeFromSuperview];
 }
 
++(NSString *)makeContactPath:(NSString *)contactEmail{
+	
+	NSMutableString *key = [NSMutableString stringWithFormat:@"contact_key_w"];
+	NSString *theKey = [key stringByReplacingOccurrencesOfString:@"w" withString:[self formatEmail:contactEmail]];
+	
+	return theKey;
+}
+
 @end

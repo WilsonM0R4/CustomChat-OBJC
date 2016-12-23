@@ -12,15 +12,17 @@
 
 @interface ContactsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *contactsSearchBar;
 
 @end
 
 @implementation ContactsViewController
 
-@synthesize contactsTableView;
+@synthesize contactsTableView,contactsSearchBar;
 
 NSMutableArray* contacts;
 UIActivityIndicatorView *loaderView;
+NSInteger tempIndex;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,6 +31,7 @@ UIActivityIndicatorView *loaderView;
 	self.contactsTableView.dataSource = self;
 	FirebaseHelper *helper = [FirebaseHelper sharedInstance];
 	helper.domainDelegate = self;
+	contactsSearchBar.delegate = self;
 	
 	contacts = [[NSMutableArray alloc] init];
 	[[FirebaseHelper sharedInstance] bringContacts];
@@ -52,7 +55,7 @@ UIActivityIndicatorView *loaderView;
 	[[FirebaseHelper sharedInstance] removeContact:contactEmail];
 }
 
--(void)contactAlertSheetWithTitle:(NSString *)title{
+-(void)contactAlertSheetWithTitle:(NSString *)title andListIndex:(NSInteger) index{
 	
 	UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:@"¿que deseas hacer?" preferredStyle:UIAlertControllerStyleActionSheet];
 	
@@ -73,11 +76,18 @@ UIActivityIndicatorView *loaderView;
 		[controller dismissViewControllerAnimated:YES completion:nil];
 	}];
 	
+	UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"cancelar" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+		NSLog(@"cancelar ha sido presionado");
+		[controller dismissViewControllerAnimated:YES completion:nil];
+	}];
+	
 	UIAlertAction *actionDelete = [UIAlertAction actionWithTitle:@"eliminar" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 		
 		NSLog(@"eliminar ha sido presionado");
 		
 		NSLog(@"contact to delete is %@",title);
+		
+		tempIndex = index;
 		
 		[self deleteContact:[User formatEmail:title]];
 		
@@ -86,6 +96,7 @@ UIActivityIndicatorView *loaderView;
 	
 	[controller addAction:actionView];
 	[controller addAction:actionNewMesage];
+	[controller addAction:actionCancel];
 	[controller addAction:actionDelete];
 	
 	[self presentViewController:controller animated:YES completion:nil];
@@ -135,7 +146,34 @@ UIActivityIndicatorView *loaderView;
 }
 
 -(void)onContactRemoved{
-	//[self.contactsTableView reloadData];
+	
+	NSLog(@"index is %ld",(long)tempIndex);
+	[contacts removeObjectAtIndex:tempIndex];
+	[self.contactsTableView reloadData];
+}
+
+-(void)onUserFound:(NSDictionary *)foundUserData{
+	[User hideLoader:loaderView];
+	UIAlertController *foundUserAlert = [UIAlertController alertControllerWithTitle:@"Encontrado!" message:foundUserData[USERNAME_PATH] preferredStyle:UIAlertControllerStyleActionSheet];
+	
+	UIAlertAction *actionAdd = [UIAlertAction actionWithTitle:@"añadir a contactos" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		
+		[[FirebaseHelper sharedInstance] addContact:[foundUserData objectForKey:@"email"]];
+		
+		[foundUserAlert dismissViewControllerAnimated:YES completion:nil];
+		NSLog(@"has presionado añadir");
+	}];
+	
+	UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"cancelar" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+		[foundUserAlert dismissViewControllerAnimated:YES completion:nil];
+		
+		NSLog(@"has presionado cancelar");
+	}];
+	
+	[foundUserAlert addAction:actionAdd];
+	[foundUserAlert addAction:actionCancel];
+	[self presentViewController:foundUserAlert animated:YES completion:nil];
+	
 }
 
 #pragma mark tableView datasource
@@ -155,7 +193,19 @@ UIActivityIndicatorView *loaderView;
 }
 #pragma mark tableView delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-	[self contactAlertSheetWithTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
+	[self contactAlertSheetWithTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text andListIndex:indexPath.row];
+}
+
+#pragma mark searchBar delegate
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)	searchBar{
+	NSString *textToSearch = searchBar.text;
+	
+	[[FirebaseHelper sharedInstance] searchUser:textToSearch];
+	[self.view endEditing:YES];
+	[User showLoader:loaderView inView:self.view];
+	[searchBar setText:@""];
+	
 }
 
 @end

@@ -13,6 +13,8 @@
 #define USER_PROFILE_IMAGE_PATH @"profile_image"
 #define USER_STATUS_PATH @"status"
 #define USERNAME_PATH @"username"
+#define CONTACTS_PATH @"contacts"
+#define CHATS_PATH @"chats"
 
 @interface User :NSObject
 
@@ -25,5 +27,6 @@
 +(NSString *)formatEmail:(NSString *)email;
 +(void)showLoader:(UIActivityIndicatorView *)indicatorView inView:(UIView *)parentView;
 +(void)hideLoader:(UIActivityIndicatorView *)indicatorView;
++(NSString *)makeContactPath:(NSString *)contactEmail;
 
 @end

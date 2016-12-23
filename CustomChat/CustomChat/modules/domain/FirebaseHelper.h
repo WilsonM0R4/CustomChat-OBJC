@@ -18,9 +18,12 @@ typedef void (^loginHandler)(BOOL);
 @protocol DomainProtocol <NSObject>
 
 @optional
+
 -(void)onContactsFound:(NSArray *)foundContacts;
 -(void)onExtraDataFound:(NSDictionary *)extraData forUserEmail:(NSString *)email;
--(void)onContactRemoved;
+-(void)onContactRemoved:(NSInteger)index;
+-(void)onUserFound:(NSDictionary *)foundUserData;
+-(void)onChatsFound:(NSArray *)foundChats;
 
 @end
 
@@ -38,8 +41,11 @@ typedef void (^loginHandler)(BOOL);
 -(FIRDatabaseReference *)getDatabaseReference;
 -(FIRUser *)getCurrentUser;
 -(NSString *)getCurrentUserState;
+-(void)searchUser:(NSString *)userEmail;
+-(void)addContact:(NSString *)contactEmail;
 -(void)getExtraDataForUser:(NSString *)user;
 -(void)bringContacts;
+-(void)bringChats;
 -(void)changeUserState:(NSString *)userState forUserWithEmail:(NSString *)email;
 -(void)changeUsername:(NSString *)username forUserWithEmail:(NSString *)email;
 -(void)changePassword:(NSString *)password;

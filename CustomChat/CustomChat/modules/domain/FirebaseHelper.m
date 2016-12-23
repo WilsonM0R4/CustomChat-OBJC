@@ -133,12 +133,49 @@
 	
 }
 
+-(void)searchUser:(NSString *)userEmail{
+	[[[[self getDatabaseReference] child:USER_EXTRA_DATA_PATH] child:[User formatEmail:userEmail]] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+		
+		NSMutableDictionary *contactData = snapshot.value;
+		NSNull *nullValue = [NSNull null];
+		
+		if(snapshot.value!=nullValue){
+			NSLog(@"contact exists, and the data is: %@",contactData);
+			if([_domainDelegate respondsToSelector:@selector(onUserFound:)]){
+				[contactData setObject:userEmail forKey:@"email"];
+				[self.domainDelegate onUserFound:contactData];
+			}else{
+				NSLog(@"delegate does not respond to selector");
+			}
+		}else{
+			NSLog(@"contact does not exists");
+		}
+		
+	} ];
+}
+
+-(void)addContact:(NSString *)contactEmail{
+	
+	NSDictionary *data = @{[User makeContactPath:contactEmail]:contactEmail};
+	
+	FIRDatabaseReference *database = [[[self getDatabaseReference] child:CONTACTS_PATH] child:[User formatEmail:[FIRAuth auth].currentUser.email]];
+	[database updateChildValues:data];
+	[database observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+		NSDictionary *resp = snapshot.value;
+		
+		NSLog(@"response is %@",resp);
+		
+	}];
+	
+}
+
 -(void)bringContacts{
 	
 	NSMutableArray *contacts = [[NSMutableArray alloc] init];
 	
 	[[[[[FirebaseHelper sharedInstance] getDatabaseReference] child:CONTACTS_PATH] child:[User formatEmail:[[FIRAuth auth] currentUser].email]] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
 		
+		[contacts removeAllObjects];
 		[contacts addObjectsFromArray: [snapshot.value allValues]];
 		
 		//[ContactsViewController onContactsFound:[snapshot.value allValues]];
@@ -153,6 +190,38 @@
 	}];
 	
 	NSLog(@"contacts here are %@",contacts);
+	
+}
+
+-(void)bringChats{
+	
+	NSMutableArray *foundChats = [[NSMutableArray alloc] init];
+	
+	FIRDatabaseReference *reference = [[self getDatabaseReference] child:CHATS_PATH];
+	
+	[reference observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+		NSLog(@"found data is %@",snapshot.value);
+		
+		NSDictionary *data = snapshot.value;
+		NSArray *tempKeys = [data allKeys];
+		
+		for(int c=0;c<tempKeys.count ;c++){
+			
+			NSRange range = [[tempKeys objectAtIndex:c] rangeOfString:[User formatEmail:[FIRAuth auth].currentUser.email]];
+			NSLog(@"range is %lu",(unsigned long)range.length);
+			
+			if(range.length!= 0){
+				[foundChats addObject:[data objectForKey:tempKeys[c]]];
+			}else{
+				NSLog(@"this chat does not correspond to current user");
+			}
+		}
+
+		NSLog(@"found chats: %@",foundChats);
+		
+	}];
+	
+	
 	
 }
 
@@ -187,8 +256,8 @@
 		}else if(ref!=nil){
 			NSLog(@"contact has been removed");
 			
-			if([_domainDelegate respondsToSelector:@selector(onContactRemoved)]){
-				[self.domainDelegate onContactRemoved];
+			if([_domainDelegate respondsToSelector:@selector(onContactRemoved:)]){
+				[self.domainDelegate onContactRemoved:0];
 			}
 		}
 		

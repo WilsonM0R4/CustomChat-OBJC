@@ -9,6 +9,8 @@
 #import "ChatsViewController.h"
 
 @interface ChatsViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *chatsTable;
+@property NSMutableDictionary *chatsDictionary;
 
 @end
 
@@ -16,12 +18,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	self.chatsTable.delegate = self;
+	self.chatsTable.dataSource = self;
+	
+	[[FirebaseHelper sharedInstance] bringChats];
+	
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark DomainDelegate
+
+
+
+#pragma mark tableView datasource
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+	return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+	return self.chatsDictionary.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+	return nil;
+}
+
+#pragma mark tableView delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	
 }
 
 /*
