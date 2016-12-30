@@ -23,7 +23,7 @@ typedef void (^loginHandler)(BOOL);
 -(void)onExtraDataFound:(NSDictionary *)extraData forUserEmail:(NSString *)email;
 -(void)onContactRemoved:(NSInteger)index;
 -(void)onUserFound:(NSDictionary *)foundUserData;
--(void)onChatsFound:(NSArray *)foundChats;
+-(void)onChatsFound:(NSMutableArray *)foundChats;
 
 @end
 

@@ -41,4 +41,28 @@
 	return theKey;
 }
 
++(NSDictionary *)getChatMembersFromString:(NSString *)chatString withCurrentUser:(NSString *)currentUser{
+	
+	
+	NSRange range = [chatString rangeOfString:@"&"];
+	
+	NSLog(@"substrings are %@ and %@",[chatString substringToIndex:range.location], [chatString substringFromIndex:range.location+1]);
+	
+	NSString *string1  = [chatString substringToIndex:range.location];
+	NSString *string2 = [chatString substringFromIndex:range.location+1];
+	
+	NSDictionary *dic ;
+	
+	if([string1 isEqualToString:[self formatEmail:currentUser]]){
+		dic = @{CONTACT:string2,
+				CURRENT_USER:string1};
+	}else{
+		dic = @{CONTACT:string1,
+			 CURRENT_USER:string2};
+	}
+	
+	
+	return dic;
+}
+
 @end

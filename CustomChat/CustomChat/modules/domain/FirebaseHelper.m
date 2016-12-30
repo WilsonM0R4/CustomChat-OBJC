@@ -16,6 +16,9 @@
 
 @synthesize handler, response;
 
+
+NSNull *nullValue;
+
 +(id)sharedInstance{
 	
 	static FirebaseHelper *helper = nil;
@@ -28,6 +31,9 @@
 
 -(id)init{
 	response = [[NSMutableDictionary alloc] init];
+	
+	nullValue = [NSNull null];
+	
 	return self;
 }
 
@@ -137,7 +143,6 @@
 	[[[[self getDatabaseReference] child:USER_EXTRA_DATA_PATH] child:[User formatEmail:userEmail]] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
 		
 		NSMutableDictionary *contactData = snapshot.value;
-		NSNull *nullValue = [NSNull null];
 		
 		if(snapshot.value!=nullValue){
 			NSLog(@"contact exists, and the data is: %@",contactData);
@@ -202,6 +207,9 @@
 	[reference observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
 		NSLog(@"found data is %@",snapshot.value);
 		
+		[foundChats removeAllObjects];
+		
+		
 		NSDictionary *data = snapshot.value;
 		NSArray *tempKeys = [data allKeys];
 		
@@ -211,17 +219,21 @@
 			NSLog(@"range is %lu",(unsigned long)range.length);
 			
 			if(range.length!= 0){
-				[foundChats addObject:[data objectForKey:tempKeys[c]]];
+				[foundChats addObject:@{[tempKeys objectAtIndex:c]:[data objectForKey:tempKeys[c]]}];
 			}else{
 				NSLog(@"this chat does not correspond to current user");
 			}
 		}
+		
+		if([_domainDelegate respondsToSelector:@selector(onChatsFound:)] ){
+			[self.domainDelegate onChatsFound:foundChats];
+		}else{
+			NSLog(@"not responding to selector (onChatsfound:)");
+		}
 
-		NSLog(@"found chats: %@",foundChats);
+		NSLog(@"found %@",foundChats);
 		
 	}];
-	
-	
 	
 }
 

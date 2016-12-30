@@ -7,16 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		272A9D921E12D7EA0050D177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 272A9D911E12D7EA0050D177 /* Main.storyboard */; };
+		272A9D961E12D8780050D177 /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272A9D941E12D8780050D177 /* ChatTableViewCell.m */; };
+		272A9D971E12D8780050D177 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272A9D951E12D8780050D177 /* ChatTableViewCell.xib */; };
 		2730366E1DF877F500660339 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2730366D1DF877F500660339 /* ContactTableViewCell.m */; };
 		273036701DF878B200660339 /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2730366F1DF878B200660339 /* ContactsCell.xib */; };
-		273500A21E0D729900352D90 /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 273500A01E0D729900352D90 /* ChatTableViewCell.m */; };
-		273500A31E0D729900352D90 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273500A11E0D729900352D90 /* ChatTableViewCell.xib */; };
+		273287A11E159E9B00F8FB67 /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273287A01E159E9B00F8FB67 /* ChatController.m */; };
+		273287A51E15BCB100F8FB67 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 273287A31E15BCB100F8FB67 /* MessageCell.m */; };
+		273287A61E15BCB100F8FB67 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273287A41E15BCB100F8FB67 /* MessageCell.xib */; };
 		2736DAE31DB6BC5600E96EFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736DAE21DB6BC5600E96EFC /* main.m */; };
 		2736DAE61DB6BC5600E96EFC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736DAE51DB6BC5600E96EFC /* AppDelegate.m */; };
 		2736DAEE1DB6BC5600E96EFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2736DAED1DB6BC5600E96EFC /* Assets.xcassets */; };
 		2736DAF11DB6BC5600E96EFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2736DAEF1DB6BC5600E96EFC /* LaunchScreen.storyboard */; };
 		2736DAF91DB6BFFD00E96EFC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2736DAF81DB6BFFC00E96EFC /* GoogleService-Info.plist */; };
 		2737537E1DF5D3090004B7AB /* InfoContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737537D1DF5D3090004B7AB /* InfoContactViewController.m */; };
+		274503701E11CBEB007E7C39 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2745036F1E11CBEB007E7C39 /* DateHelper.m */; };
 		278896AB1DCB780200675816 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 278896901DCB780200675816 /* Contents.json */; };
 		278896AC1DCB780200675816 /* ic_exit_to_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 278896911DCB780200675816 /* ic_exit_to_app.png */; };
 		278896AD1DCB780200675816 /* ic_exit_to_app_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278896921DCB780200675816 /* ic_exit_to_app_2x.png */; };
@@ -56,18 +61,23 @@
 		27F967CE1DCA8AAB00E58A55 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F967CA1DCA8AAB00E58A55 /* ProfileViewController.m */; };
 		27F967D61DCA8B4600E58A55 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F967D51DCA8B4600E58A55 /* ViewController.m */; };
 		27F967D91DCA8BCF00E58A55 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F967D81DCA8BCF00E58A55 /* HomeViewController.m */; };
-		27F967DB1DCA8C3200E58A55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27F967DA1DCA8C3200E58A55 /* Main.storyboard */; };
 		E977C4A68AE5D25C629740EF /* libPods-CustomChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 745F74ED2B71A5094826349C /* libPods-CustomChat.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A2C08D4EFC707FBAC72422C /* Pods-CustomChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomChat/Pods-CustomChat.release.xcconfig"; sourceTree = "<group>"; };
+		272A9D911E12D7EA0050D177 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		272A9D931E12D8780050D177 /* ChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewCell.h; sourceTree = "<group>"; };
+		272A9D941E12D8780050D177 /* ChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewCell.m; sourceTree = "<group>"; };
+		272A9D951E12D8780050D177 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
 		2730366C1DF877F500660339 /* ContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTableViewCell.h; sourceTree = "<group>"; };
 		2730366D1DF877F500660339 /* ContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
 		2730366F1DF878B200660339 /* ContactsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsCell.xib; sourceTree = "<group>"; };
-		2735009F1E0D729900352D90 /* ChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewCell.h; sourceTree = "<group>"; };
-		273500A01E0D729900352D90 /* ChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewCell.m; sourceTree = "<group>"; };
-		273500A11E0D729900352D90 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
+		2732879F1E159E9B00F8FB67 /* ChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatController.h; sourceTree = "<group>"; };
+		273287A01E159E9B00F8FB67 /* ChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatController.m; sourceTree = "<group>"; };
+		273287A21E15BCB100F8FB67 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		273287A31E15BCB100F8FB67 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		273287A41E15BCB100F8FB67 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		2736DADE1DB6BC5500E96EFC /* CustomChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2736DAE21DB6BC5600E96EFC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2736DAE41DB6BC5600E96EFC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CustomChat/AppDelegate.h; sourceTree = "<group>"; };
@@ -78,6 +88,8 @@
 		2736DAF81DB6BFFC00E96EFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2737537C1DF5D3090004B7AB /* InfoContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoContactViewController.h; sourceTree = "<group>"; };
 		2737537D1DF5D3090004B7AB /* InfoContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoContactViewController.m; sourceTree = "<group>"; };
+		2745036E1E11CBEB007E7C39 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
+		2745036F1E11CBEB007E7C39 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
 		278896901DCB780200675816 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		278896911DCB780200675816 /* ic_exit_to_app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_exit_to_app.png; sourceTree = "<group>"; };
 		278896921DCB780200675816 /* ic_exit_to_app_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_exit_to_app_2x.png; sourceTree = "<group>"; };
@@ -125,7 +137,6 @@
 		27F967D51DCA8B4600E58A55 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		27F967D71DCA8BCF00E58A55 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		27F967D81DCA8BCF00E58A55 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		27F967DA1DCA8C3200E58A55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		745F74ED2B71A5094826349C /* libPods-CustomChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B06963E54E45761E020E95 /* Pods-CustomChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomChat/Pods-CustomChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,9 +156,12 @@
 		2735009E1E0D725800352D90 /* cell */ = {
 			isa = PBXGroup;
 			children = (
-				2735009F1E0D729900352D90 /* ChatTableViewCell.h */,
-				273500A01E0D729900352D90 /* ChatTableViewCell.m */,
-				273500A11E0D729900352D90 /* ChatTableViewCell.xib */,
+				272A9D931E12D8780050D177 /* ChatTableViewCell.h */,
+				272A9D941E12D8780050D177 /* ChatTableViewCell.m */,
+				272A9D951E12D8780050D177 /* ChatTableViewCell.xib */,
+				273287A21E15BCB100F8FB67 /* MessageCell.h */,
+				273287A31E15BCB100F8FB67 /* MessageCell.m */,
+				273287A41E15BCB100F8FB67 /* MessageCell.xib */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -173,6 +187,7 @@
 		2736DAE01DB6BC5600E96EFC /* CustomChat */ = {
 			isa = PBXGroup;
 			children = (
+				272A9D911E12D7EA0050D177 /* Main.storyboard */,
 				27CC7F771DC919AD00D4E299 /* modules */,
 				2736DAED1DB6BC5600E96EFC /* Assets.xcassets */,
 				2736DAF81DB6BFFC00E96EFC /* GoogleService-Info.plist */,
@@ -260,6 +275,8 @@
 			children = (
 				278896BF1DCBA48B00675816 /* User.h */,
 				278896C01DCBA49700675816 /* User.m */,
+				2745036E1E11CBEB007E7C39 /* DateHelper.h */,
+				2745036F1E11CBEB007E7C39 /* DateHelper.m */,
 			);
 			name = commons;
 			path = CustomChat/modules/commons;
@@ -360,6 +377,8 @@
 				2735009E1E0D725800352D90 /* cell */,
 				27F967C01DCA8AAB00E58A55 /* ChatsViewController.h */,
 				27F967C11DCA8AAB00E58A55 /* ChatsViewController.m */,
+				2732879F1E159E9B00F8FB67 /* ChatController.h */,
+				273287A01E159E9B00F8FB67 /* ChatController.m */,
 			);
 			path = chats;
 			sourceTree = "<group>";
@@ -390,7 +409,6 @@
 		27F967D31DCA8B4600E58A55 /* main */ = {
 			isa = PBXGroup;
 			children = (
-				27F967DA1DCA8C3200E58A55 /* Main.storyboard */,
 				27F967D41DCA8B4600E58A55 /* ViewController.h */,
 				27F967D51DCA8B4600E58A55 /* ViewController.m */,
 			);
@@ -484,6 +502,7 @@
 				278896B11DCB780200675816 /* Contents.json in Resources */,
 				278896B31DCB780200675816 /* ic_insert_emoticon_2x.png in Resources */,
 				278896B21DCB780200675816 /* ic_insert_emoticon.png in Resources */,
+				273287A61E15BCB100F8FB67 /* MessageCell.xib in Resources */,
 				278896AB1DCB780200675816 /* Contents.json in Resources */,
 				27CC7FB71DC96A6700D4E299 /* Contents.json in Resources */,
 				2736DAF91DB6BFFD00E96EFC /* GoogleService-Info.plist in Resources */,
@@ -492,6 +511,7 @@
 				278896AE1DCB780200675816 /* ic_exit_to_app_3x.png in Resources */,
 				27CC7FB41DC96A6700D4E299 /* ic_account_circle.png in Resources */,
 				27CC7FB91DC96A6700D4E299 /* ic_chat_bubble_2x.png in Resources */,
+				272A9D921E12D7EA0050D177 /* Main.storyboard in Resources */,
 				278896AD1DCB780200675816 /* ic_exit_to_app_2x.png in Resources */,
 				27CC7FBB1DC96A6700D4E299 /* Contents.json in Resources */,
 				278896BA1DCB780200675816 /* ic_person.png in Resources */,
@@ -507,12 +527,11 @@
 				27CC7FD01DC96A6700D4E299 /* splash_test.png in Resources */,
 				2736DAEE1DB6BC5600E96EFC /* Assets.xcassets in Resources */,
 				27CC7FCE1DC96A6700D4E299 /* profile_icon_9.png in Resources */,
+				272A9D971E12D8780050D177 /* ChatTableViewCell.xib in Resources */,
 				27CC7FCF1DC96A6700D4E299 /* profile_icon_9.xcf in Resources */,
-				273500A31E0D729900352D90 /* ChatTableViewCell.xib in Resources */,
 				27CC7FBD1DC96A6700D4E299 /* ic_contacts_2x.png in Resources */,
 				27CC7FBA1DC96A6700D4E299 /* ic_chat_bubble_3x.png in Resources */,
 				27CC7FB81DC96A6700D4E299 /* ic_chat_bubble.png in Resources */,
-				27F967DB1DCA8C3200E58A55 /* Main.storyboard in Resources */,
 				27CC7FB61DC96A6700D4E299 /* ic_account_circle_3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -573,9 +592,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				27F967CE1DCA8AAB00E58A55 /* ProfileViewController.m in Sources */,
-				273500A21E0D729900352D90 /* ChatTableViewCell.m in Sources */,
 				27F967D61DCA8B4600E58A55 /* ViewController.m in Sources */,
 				27B17B3D1DD2896600AFAC31 /* EditProfileViewController.m in Sources */,
+				273287A11E159E9B00F8FB67 /* ChatController.m in Sources */,
+				272A9D961E12D8780050D177 /* ChatTableViewCell.m in Sources */,
 				278896C11DCBA49700675816 /* User.m in Sources */,
 				27F967CC1DCA8AAB00E58A55 /* ContactsViewController.m in Sources */,
 				2736DAE61DB6BC5600E96EFC /* AppDelegate.m in Sources */,
@@ -583,6 +603,8 @@
 				2736DAE31DB6BC5600E96EFC /* main.m in Sources */,
 				2730366E1DF877F500660339 /* ContactTableViewCell.m in Sources */,
 				27F967CB1DCA8AAB00E58A55 /* ChatsViewController.m in Sources */,
+				274503701E11CBEB007E7C39 /* DateHelper.m in Sources */,
+				273287A51E15BCB100F8FB67 /* MessageCell.m in Sources */,
 				2737537E1DF5D3090004B7AB /* InfoContactViewController.m in Sources */,
 				27F967D91DCA8BCF00E58A55 /* HomeViewController.m in Sources */,
 			);

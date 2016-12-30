@@ -2,7 +2,7 @@
 //  ChatTableViewCell.m
 //  CustomChat
 //
-//  Created by Wilson Mora on 12/23/16.
+//  Created by Wilson Mora on 12/27/16.
 //  Copyright © 2016 WilsonApps. All rights reserved.
 //
 

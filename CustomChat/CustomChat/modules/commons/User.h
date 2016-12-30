@@ -15,6 +15,8 @@
 #define USERNAME_PATH @"username"
 #define CONTACTS_PATH @"contacts"
 #define CHATS_PATH @"chats"
+#define CONTACT @"contact"
+#define CURRENT_USER @"currentUser"
 
 @interface User :NSObject
 
@@ -28,5 +30,6 @@
 +(void)showLoader:(UIActivityIndicatorView *)indicatorView inView:(UIView *)parentView;
 +(void)hideLoader:(UIActivityIndicatorView *)indicatorView;
 +(NSString *)makeContactPath:(NSString *)contactEmail;
++(NSDictionary *)getChatMembersFromString:(NSString *)chatString withCurrentUser:(NSString *)currentUser;
 
 @end
