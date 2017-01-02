@@ -8,6 +8,8 @@
 
 #import "ChatController.h"
 #import "MessageCell.h"
+#import "FirebaseHelper.h"
+#import "User.h"
 
 @interface ChatController ()
 
@@ -16,6 +18,8 @@
 @implementation ChatController
 
 NSString *reuseCellIdentifier;
+NSArray *keys;
+NSString *currentUser;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,7 +34,15 @@ NSString *reuseCellIdentifier;
 	
 	[self.messagesTable registerNib:[UINib nibWithNibName:@"MessageCell" bundle:nil] forCellReuseIdentifier:reuseCellIdentifier];
 	
+	currentUser = [User formatEmail:[[FirebaseHelper sharedInstance] getCurrentUser].email];	
+	
 	[self configNavigationBar];
+	[self extractChatKeys:self.chatDictionary];
+	
+}
+
+-(void)extractChatKeys:(NSDictionary *)chatDictionary{
+	keys = [chatDictionary allKeys];
 }
 
 -(void)configNavigationBar{	
@@ -63,8 +75,25 @@ NSString *reuseCellIdentifier;
 	
 	MessageCell *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:reuseCellIdentifier];
 	
-	cell.messageLabel.text = @"Mensaje";
-	cell.hourLabel.text = @"hora de envio";
+	[cell.messageLabel setText:[[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"content"]];	
+	
+	if([_chatDictionary[keys[indexPath.row]][@"sender"] isEqualToString:currentUser]){
+		[cell configureCell:STYLE_USER];
+		NSLog(@"style is %@",STYLE_USER);
+	}else{
+		[cell configureCell:STYLE_CONTACT];
+		NSLog(@"style is %@",STYLE_CONTACT);
+	}
+	
+	
+	NSLog(@"key is %@",[keys objectAtIndex:indexPath.row]);
+	NSLog(@"chat is %@",[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]]);
+	
+	
+	//cell.messageLabel.text = [[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"content"];
+	cell.hourLabel.text = [[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"hour"];
+	
+	
 	
 	return cell;
 }

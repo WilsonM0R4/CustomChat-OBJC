@@ -17,7 +17,7 @@
 +(NSString *)getExactDate{
 	
 	NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-	[formatter setDateFormat:@"MMddyyhhmmssmmss"];
+	[formatter setDateFormat:@"yyMMddhhmmssmmss"];
 	
 	NSLog(@"date is %@",[formatter stringFromDate:[NSDate date]]);
 	
