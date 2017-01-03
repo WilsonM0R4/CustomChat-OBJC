@@ -200,7 +200,7 @@ NSNull *nullValue;
 
 -(void)bringChats{
 	
-	NSMutableArray *foundChats = [[NSMutableArray alloc] init];
+	NSMutableDictionary *foundChats = [[NSMutableDictionary alloc] init];
 	
 	FIRDatabaseReference *reference = [[self getDatabaseReference] child:CHATS_PATH];
 	
@@ -219,7 +219,7 @@ NSNull *nullValue;
 			NSLog(@"range is %lu",(unsigned long)range.length);
 			
 			if(range.length!= 0){
-				[foundChats addObject:@{[tempKeys objectAtIndex:c]:[data objectForKey:tempKeys[c]]}];
+				[foundChats setObject:[data objectForKey:[tempKeys objectAtIndex:c]] forKey:[tempKeys objectAtIndex:c]];
 			}else{
 				NSLog(@"this chat does not correspond to current user");
 			}
@@ -275,6 +275,28 @@ NSNull *nullValue;
 		
 	}] ;
 }
+
+-(void)listenForChatsWithChatPath:(NSString *)chatPath{
+	
+	[[[[self getDatabaseReference] child:CHATS_PATH] child: chatPath] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+		
+		if(snapshot.value!=nullValue){
+			NSLog(@"snapshot for chats is: %@",snapshot.value);
+			
+			if([_domainDelegate respondsToSelector:@selector(onChatListenerResult:)]){
+				[_domainDelegate onChatListenerResult:snapshot.value];
+			}else{
+				NSLog(@"delegate does not responds to selector (onChatListenerResult:)");
+			}
+			
+		}else{
+			NSLog(@"none snapshot received");
+		}
+		
+	}];
+	
+}
+
 
 -(void)signOff{
 	NSError *error;

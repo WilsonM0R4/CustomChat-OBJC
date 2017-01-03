@@ -20,9 +20,12 @@
 NSString *reuseCellIdentifier;
 NSArray *keys;
 NSString *currentUser;
+NSNull *null;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	null = [NSNull null];
 	
 	NSLog(@"chat is %@",self.chatDictionary);
 	
@@ -38,6 +41,15 @@ NSString *currentUser;
 	
 	[self configNavigationBar];
 	[self extractChatKeys:self.chatDictionary];
+	
+	NSLog(@"path in chat controller is: %@",self.chatPath);
+
+	FirebaseHelper *helper = [FirebaseHelper sharedInstance];
+	[helper listenForChatsWithChatPath:self.chatPath];
+	
+	helper.domainDelegate = self;
+	
+	
 	
 }
 
@@ -74,8 +86,10 @@ NSString *currentUser;
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	
 	MessageCell *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:reuseCellIdentifier];
+	NSLog(@"keys array on index %ld contains: %@",indexPath.row,[keys objectAtIndex:indexPath.row]);
 	
-	[cell.messageLabel setText:[[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"content"]];	
+	[cell.messageLabel setText:[[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"content"]];
+	cell.hourLabel.text = [[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"hour"];
 	
 	if([_chatDictionary[keys[indexPath.row]][@"sender"] isEqualToString:currentUser]){
 		[cell configureCell:STYLE_USER];
@@ -89,13 +103,29 @@ NSString *currentUser;
 	NSLog(@"key is %@",[keys objectAtIndex:indexPath.row]);
 	NSLog(@"chat is %@",[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]]);
 	
-	
-	//cell.messageLabel.text = [[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"content"];
-	cell.hourLabel.text = [[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"hour"];
-	
-	
-	
 	return cell;
+}
+
+#pragma mark DomainDelegate
+-(void)onChatListenerResult:(NSMutableDictionary *)chat{
+	
+	NSLog(@"received response in delegate is: %@",chat);
+	NSLog(@"count for received Chat is: %ld",chat.count);
+	
+	NSArray *tempKeys = [chat allKeys];
+	
+	keys = tempKeys;
+	
+	[self.chatDictionary removeAllObjects];
+	
+	for(int c=0; c<chat.count; c++){
+		
+		NSLog(@"on index %i",c);
+		[self.chatDictionary setObject:[chat objectForKey:[tempKeys objectAtIndex:c]] forKey:[tempKeys objectAtIndex:c]];
+	}
+	
+	[self.messagesTable reloadData];
+	
 }
 
 

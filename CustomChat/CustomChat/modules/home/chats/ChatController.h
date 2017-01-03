@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FirebaseHelper.h"
 
-@interface ChatController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ChatController : UIViewController <UITableViewDelegate, UITableViewDataSource, DomainProtocol>
 
-@property NSDictionary *chatDictionary;
+@property NSMutableDictionary *chatDictionary;
+@property NSString *chatPath;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navbarTitle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *navBarBackButton;

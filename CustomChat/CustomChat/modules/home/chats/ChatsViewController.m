@@ -22,9 +22,9 @@
 
 @synthesize chatsTable;
 
-NSMutableArray *chats;
+NSMutableDictionary *chats;
 NSString *cellId;
-NSMutableArray *arrayKeys;
+NSMutableArray *chatPathKeys;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,8 +35,8 @@ NSMutableArray *arrayKeys;
 	FirebaseHelper * helper = [FirebaseHelper sharedInstance];
 	helper.domainDelegate = self;
 	
-	chats = [[NSMutableArray alloc] init];
-	arrayKeys = [[NSMutableArray alloc] init];
+	chats = [[NSMutableDictionary alloc] init];
+	chatPathKeys = [[NSMutableArray alloc] init];
 	
 	cellId = @"chatsCell";
 	
@@ -55,7 +55,7 @@ NSMutableArray *arrayKeys;
 
 #pragma mark DomainDelegate
 
--(void)onChatsFound:(NSMutableArray *)foundChats{
+-(void)onChatsFound:(NSMutableDictionary *)foundChats{
 	
 	//NSNull *nullValue = [NSNull null];
 	
@@ -70,7 +70,7 @@ NSMutableArray *arrayKeys;
 	}
 	
 	
-	[chats addObjectsFromArray:foundChats];
+	[chats setDictionary:foundChats];
 	//[chats replaceObjectsInRange:NSMakeRange(0, chats.count) withObjectsFromArray:foundChats];
 	NSLog(@"count in delegate is: %ld, found chats count is:%ld",chats.count,foundChats.count);
 	[chatsTable reloadData];
@@ -94,23 +94,23 @@ NSMutableArray *arrayKeys;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	
-	NSArray *dic = [chats[indexPath.row] allKeys];
-	NSArray *tempChatKeys = [[[chats objectAtIndex:indexPath.row] objectForKey:dic[0]] allKeys];
+	NSArray *dic = [chats allKeys];
+	NSArray *tempChatKeys = [[chats objectForKey:[dic objectAtIndex:indexPath.row]] allKeys];
+	[chatPathKeys addObject:dic[0]];
 	
 	NSLog(@"temp chat keys: %@",tempChatKeys);
 	
-	NSDictionary *members = [User getChatMembersFromString:dic[0] withCurrentUser:[[FirebaseHelper sharedInstance] getCurrentUser].email];
+	NSDictionary *members = [User getChatMembersFromString:dic[indexPath.row] withCurrentUser:[[FirebaseHelper sharedInstance] getCurrentUser].email];
 	
 	
 	ChatTableViewCell *tableViewCell = (ChatTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
 	
 	tableViewCell.title.text = members[CONTACT];
-	tableViewCell.subtitle.text = [[[[chats objectAtIndex:indexPath.row] objectForKey:dic[0]] objectForKey:[tempChatKeys objectAtIndex:0]] objectForKey:@"content"];
+	tableViewCell.subtitle.text = [[[chats  objectForKey:dic[indexPath.row]] objectForKey:[tempChatKeys objectAtIndex:0]] objectForKey:@"content"];
 	
 	NSLog(@"temp key is: %@",dic[0]);
 	
-	NSLog(@"message is: %@",[[[[chats objectAtIndex:indexPath.row] objectForKey:dic[0]] objectForKey:[tempChatKeys objectAtIndex:tempChatKeys.count-1]] objectForKey:@"content"] );
+	NSLog(@"message is: %@",[[[chats objectForKey:dic[indexPath.row]] objectForKey:[tempChatKeys objectAtIndex:tempChatKeys.count-1]] objectForKey:@"content"] );
 	
 	NSLog(@"test message");
 	return tableViewCell;
@@ -120,12 +120,16 @@ NSMutableArray *arrayKeys;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	NSArray *temp = [[chats objectAtIndex:indexPath.row] allKeys];
+	NSArray *temp = [chats  allKeys];
 	
-	NSLog(@"contact is %@",chats[indexPath.row]);
+	NSLog(@"contact is %@",chats[temp[indexPath.row]]);
 	ChatController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ChatController"];
 	
-	controller.chatDictionary = [[chats objectAtIndex:indexPath.row] objectForKey:temp[0]];
+	controller.chatDictionary = [chats objectForKey:temp[indexPath.row]];
+	controller.chatPath = [chatPathKeys objectAtIndex:indexPath.row];
+	NSLog(@"chat path is: %@",[chatPathKeys objectAtIndex:indexPath.row]);
+	NSLog(@"complete chat paths are: %@",chatPathKeys);
+	
 	[self presentViewController:controller animated:YES completion:nil];
 	
 }
