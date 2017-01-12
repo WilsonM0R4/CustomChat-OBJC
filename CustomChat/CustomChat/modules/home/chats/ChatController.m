@@ -10,17 +10,22 @@
 #import "MessageCell.h"
 #import "FirebaseHelper.h"
 #import "User.h"
+#import "ArrayManager.h"
+#import "DateHelper.h"
 
 @interface ChatController ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 @end
 
 @implementation ChatController
 
 NSString *reuseCellIdentifier;
-NSArray *keys;
+NSMutableArray *keys;
 NSString *currentUser;
 NSNull *null;
+NSMutableArray *chatArray;
+float constraintValue;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,6 +33,11 @@ NSNull *null;
 	null = [NSNull null];
 	
 	NSLog(@"chat is %@",self.chatDictionary);
+	
+	chatArray = [[NSMutableArray alloc] init];
+	keys = [[NSMutableArray alloc] init];
+	
+	//chatArray = [[ArrayManager compareAndOrganizeDictionaryWithNumericKeys:self.chatDictionary] mutableCopy];
 	
 	self.messagesTable.delegate = self;
 	self.messagesTable.dataSource = self;
@@ -49,12 +59,13 @@ NSNull *null;
 	
 	helper.domainDelegate = self;
 	
-	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardShown:) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardHiden) name:UIKeyboardWillHideNotification object:nil];
 	
 }
 
 -(void)extractChatKeys:(NSDictionary *)chatDictionary{
-	keys = [chatDictionary allKeys];
+	keys = [[chatDictionary allKeys] mutableCopy];
 }
 
 -(void)configNavigationBar{	
@@ -73,8 +84,62 @@ NSNull *null;
 
 - (IBAction)sendPressed:(id)sender {
 	
+	[self.view endEditing:YES];
+	NSString *messageTyped = self.messageTextField.text;
+	NSString *chatKey = [DateHelper getExactDate];
+	NSString *date = [DateHelper getDate];
+	NSString *hour = [DateHelper getHour];
+	NSString *senderMail = [User formatEmail:[[FirebaseHelper sharedInstance] getCurrentUser].email];
+	
+	NSLog(@"messageTyped is: %@, \n chatKey is: %@ \n date is %@: \n hour is: %@ \n sender mail is: %@\n",messageTyped,chatKey,date,hour,senderMail);
+	
+	NSDictionary *messageDic = @{ chatKey:@{
+										  
+										  @"content":	messageTyped,
+										  @"date":	date,
+										  @"hour":	hour,
+										  @"sender":	senderMail
+										  
+										  }																
+								 };
+	
+	[[FirebaseHelper sharedInstance] sendMessage:messageDic forConversation:self.chatPath];
+	self.messageTextField.text = @"";
+	
+}
+
+
+-(void)onKeyboardShown:(NSNotification *)notification{
+
+	CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+	
+	//animation is not working now
+	
+	[UIView animateWithDuration:10.0 animations:^{
+		
+		constraintValue = _bottomConstraint.constant;
+		_bottomConstraint.constant = keyboardSize.height;
+		
+	}];
 	
 	
+	
+	NSLog(@"keyboard is on screen");
+	
+}
+
+-(void)onKeyboardHiden{
+	
+	//animation is not working now
+	
+	[UIView animateWithDuration:10.0 animations:^{
+	
+		_bottomConstraint.constant = constraintValue;
+		
+	}];
+	
+	
+	NSLog(@"keyboard is hidden");
 }
 
 #pragma mark table datasource
@@ -85,13 +150,21 @@ NSNull *null;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	MessageCell *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:reuseCellIdentifier];
-	NSLog(@"keys array on index %ld contains: %@",indexPath.row,[keys objectAtIndex:indexPath.row]);
+	/** DATA **/
+	//NSString * keyInPosition = [[[chatArray objectAtIndex:indexPath.row] allKeys] objectAtIndex:0];
+	//NSLog(@"key in position is: %@",keyInPosition);
 	
-	[cell.messageLabel setText:[[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"content"]];
+	
+	MessageCell *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:reuseCellIdentifier];
+	
+	cell.messageLabel.text = [[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"content"];
 	cell.hourLabel.text = [[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"hour"];
 	
-	if([_chatDictionary[keys[indexPath.row]][@"sender"] isEqualToString:currentUser]){
+	NSLog(@"message at indexpath %ld is %@",indexPath.row,cell.messageLabel.text);
+	
+	if([_chatDictionary[keys[indexPath.row]][@"sender"]isEqualToString:[User formatEmail:currentUser]]
+	   ||[_chatDictionary[keys[indexPath.row]][@"sender"] isEqualToString:currentUser] ){
+		
 		[cell configureCell:STYLE_USER];
 		NSLog(@"style is %@",STYLE_USER);
 	}else{
@@ -99,9 +172,12 @@ NSNull *null;
 		NSLog(@"style is %@",STYLE_CONTACT);
 	}
 	
-	
-	NSLog(@"key is %@",[keys objectAtIndex:indexPath.row]);
-	NSLog(@"chat is %@",[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]]);
+	//NSLog(@"message in this position is %@",[[[chatArray objectAtIndex:indexPath.row] objectForKey:keyInPosition] objectForKey:@"content"]);
+	//NSLog(@"keys array on index %ld contains: %@",indexPath.row,[keys objectAtIndex:indexPath.row]);
+	/*cell.messageLabel.text = [[chatArray objectAtIndex:indexPath.row] objectForKey:@"content"];
+	 cell.hourLabel.text = [[chatArray objectAtIndex:indexPath.row] objectForKey:@"hour"];*/
+	//NSLog(@"key is %@",[keys objectAtIndex:indexPath.row]);
+	//NSLog(@"chat is %@",[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]]);
 	
 	return cell;
 }
@@ -114,17 +190,36 @@ NSNull *null;
 	
 	NSArray *tempKeys = [chat allKeys];
 	
-	keys = tempKeys;
+	tempKeys = [tempKeys sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
 	
-	[self.chatDictionary removeAllObjects];
-	
-	for(int c=0; c<chat.count; c++){
+		return [obj1 compare:obj2];
 		
-		NSLog(@"on index %i",c);
-		[self.chatDictionary setObject:[chat objectForKey:[tempKeys objectAtIndex:c]] forKey:[tempKeys objectAtIndex:c]];
+	}];
+	
+	NSLog(@"chat keys are %@",tempKeys);
+	
+	if(keys.count >0){
+		[keys removeAllObjects];
+		NSLog(@"keys had been removed");
 	}
 	
+	if(self.chatDictionary.count >0){
+		[self.chatDictionary removeAllObjects];
+	}
+	
+	
+	[keys addObjectsFromArray:tempKeys];
+	
+	[_chatDictionary setDictionary:chat];
+	
+	NSLog(@"chats dictionary copied is: %@",_chatDictionary);
+	
+	NSLog(@"attempt to reload data");
 	[self.messagesTable reloadData];
+	NSLog(@"data reloaded");
+	
+	NSIndexPath* indexPath = [NSIndexPath indexPathForRow:_chatDictionary.count-1 inSection:0];
+	[self.messagesTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 	
 }
 

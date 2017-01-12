@@ -11,7 +11,11 @@
 @implementation DateHelper
 
 +(NSString *)getDate{
-	return nil;
+	
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setDateFormat:@"yy/MM/dd"];
+	
+	return [formatter stringFromDate:[NSDate date]];
 }
 
 +(NSString *)getExactDate{
@@ -25,6 +29,12 @@
 }
 
 +(NSString *)getHour{
+	
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setDateFormat:@"hh:mm a"];
+	
+	NSString *hour = [formatter stringFromDate:[NSDate date]];
+	//review this shit
 	return nil;
 }
 

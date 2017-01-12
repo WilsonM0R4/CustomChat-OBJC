@@ -73,6 +73,7 @@ NSMutableArray *chatPathKeys;
 	[chats setDictionary:foundChats];
 	//[chats replaceObjectsInRange:NSMakeRange(0, chats.count) withObjectsFromArray:foundChats];
 	NSLog(@"count in delegate is: %ld, found chats count is:%ld",chats.count,foundChats.count);
+	
 	[chatsTable reloadData];
 	
 	
@@ -126,9 +127,9 @@ NSMutableArray *chatPathKeys;
 	ChatController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ChatController"];
 	
 	controller.chatDictionary = [chats objectForKey:temp[indexPath.row]];
-	controller.chatPath = [chatPathKeys objectAtIndex:indexPath.row];
-	NSLog(@"chat path is: %@",[chatPathKeys objectAtIndex:indexPath.row]);
-	NSLog(@"complete chat paths are: %@",chatPathKeys);
+	controller.chatPath = [temp objectAtIndex:indexPath.row];
+	NSLog(@"chat path is: %@",[temp objectAtIndex:indexPath.row]);
+	NSLog(@"complete chat paths are: %@",temp);
 	
 	[self presentViewController:controller animated:YES completion:nil];
 	

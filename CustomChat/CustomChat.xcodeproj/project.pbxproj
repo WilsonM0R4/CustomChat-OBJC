@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		272991F11E1D42D1009FE0A3 /* ArrayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 272991F01E1D42D1009FE0A3 /* ArrayManager.m */; };
 		272A9D921E12D7EA0050D177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 272A9D911E12D7EA0050D177 /* Main.storyboard */; };
 		272A9D961E12D8780050D177 /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272A9D941E12D8780050D177 /* ChatTableViewCell.m */; };
 		272A9D971E12D8780050D177 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272A9D951E12D8780050D177 /* ChatTableViewCell.xib */; };
@@ -66,6 +67,8 @@
 
 /* Begin PBXFileReference section */
 		0A2C08D4EFC707FBAC72422C /* Pods-CustomChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomChat/Pods-CustomChat.release.xcconfig"; sourceTree = "<group>"; };
+		272991EF1E1D42D1009FE0A3 /* ArrayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayManager.h; sourceTree = "<group>"; };
+		272991F01E1D42D1009FE0A3 /* ArrayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayManager.m; sourceTree = "<group>"; };
 		272A9D911E12D7EA0050D177 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		272A9D931E12D8780050D177 /* ChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewCell.h; sourceTree = "<group>"; };
 		272A9D941E12D8780050D177 /* ChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewCell.m; sourceTree = "<group>"; };
@@ -277,6 +280,8 @@
 				278896C01DCBA49700675816 /* User.m */,
 				2745036E1E11CBEB007E7C39 /* DateHelper.h */,
 				2745036F1E11CBEB007E7C39 /* DateHelper.m */,
+				272991EF1E1D42D1009FE0A3 /* ArrayManager.h */,
+				272991F01E1D42D1009FE0A3 /* ArrayManager.m */,
 			);
 			name = commons;
 			path = CustomChat/modules/commons;
@@ -603,6 +608,7 @@
 				2736DAE31DB6BC5600E96EFC /* main.m in Sources */,
 				2730366E1DF877F500660339 /* ContactTableViewCell.m in Sources */,
 				27F967CB1DCA8AAB00E58A55 /* ChatsViewController.m in Sources */,
+				272991F11E1D42D1009FE0A3 /* ArrayManager.m in Sources */,
 				274503701E11CBEB007E7C39 /* DateHelper.m in Sources */,
 				273287A51E15BCB100F8FB67 /* MessageCell.m in Sources */,
 				2737537E1DF5D3090004B7AB /* InfoContactViewController.m in Sources */,

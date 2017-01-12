@@ -278,13 +278,16 @@ NSNull *nullValue;
 
 -(void)listenForChatsWithChatPath:(NSString *)chatPath{
 	
-	[[[[self getDatabaseReference] child:CHATS_PATH] child: chatPath] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+	FIRDatabaseQuery *query = [[[[self getDatabaseReference] child:CHATS_PATH] child: chatPath] queryOrderedByKey];
+	
+	[query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
 		
 		if(snapshot.value!=nullValue){
-			NSLog(@"snapshot for chats is: %@",snapshot.value);
+			NSLog(@"snapshot for chats is: %@",snapshot.value);						
 			
 			if([_domainDelegate respondsToSelector:@selector(onChatListenerResult:)]){
 				[_domainDelegate onChatListenerResult:snapshot.value];
+				
 			}else{
 				NSLog(@"delegate does not responds to selector (onChatListenerResult:)");
 			}
@@ -295,8 +298,19 @@ NSNull *nullValue;
 		
 	}];
 	
+	/*[[[self getDatabaseReference] child:CHATS_PATH] child: chatPath];
+	
+	[[[[self getDatabaseReference] child:CHATS_PATH] child: chatPath] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+	 
+	}];*/
+	
 }
 
+-(void)sendMessage:(NSDictionary *)message forConversation:(NSString *)conversationPath{
+	
+	[[[[self getDatabaseReference] child:CHATS_PATH] child:conversationPath] updateChildValues:message];
+	
+}
 
 -(void)signOff{
 	NSError *error;

@@ -52,6 +52,7 @@ typedef void (^loginHandler)(BOOL);
 -(void)changePassword:(NSString *)password;
 -(void)removeContact:(NSString *)contact;
 -(void)listenForChatsWithChatPath:(NSString *)chatPath;
+-(void)sendMessage:(NSDictionary *)message forConversation:(NSString *)conversationPath;
 -(void)signOff;
 -(void)signUp;
 

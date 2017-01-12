@@ -27,13 +27,20 @@
 
 -(void)configureCell:(NSString *)cellStyle{
 	
+	
+	self.messageLabel.textColor = [UIColor whiteColor];
+	self.hourLabel.textColor = [UIColor whiteColor];
+	
 	if([cellStyle isEqualToString:STYLE_USER]){
 	
+		//color blue (#0080FF)
 		self.containerView.backgroundColor = [UIColor colorWithRed:0.00 green:0.50 blue:1.00 alpha:1.0];
+		
 		
 	}else if([cellStyle isEqualToString:STYLE_CONTACT]){
 		
-		self.containerView.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+		//color gray (#A4A4A4)
+		self.containerView.backgroundColor = [UIColor colorWithRed:0.64 green:0.64 blue:0.64 alpha:1.0];
 		
 	}
 }
