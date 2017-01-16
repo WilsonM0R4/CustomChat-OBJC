@@ -64,6 +64,11 @@ float constraintValue;
 	
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+	NSIndexPath* indexPath = [NSIndexPath indexPathForRow:_chatDictionary.count-1 inSection:0];
+	[self.messagesTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
 -(void)extractChatKeys:(NSDictionary *)chatDictionary{
 	keys = [[chatDictionary allKeys] mutableCopy];
 }
@@ -158,7 +163,14 @@ float constraintValue;
 	MessageCell *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:reuseCellIdentifier];
 	
 	cell.messageLabel.text = [[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"content"];
-	cell.hourLabel.text = [[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"hour"];
+	
+	if([[[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"date"] isEqualToString:[DateHelper getDate]]){
+		cell.hourLabel.text = [[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"hour"];
+	}else{
+		cell.hourLabel.text = [[_chatDictionary objectForKey:[keys objectAtIndex:indexPath.row]] objectForKey:@"date"];
+	}
+	
+	
 	
 	NSLog(@"message at indexpath %ld is %@",indexPath.row,cell.messageLabel.text);
 	
@@ -206,8 +218,7 @@ float constraintValue;
 	if(self.chatDictionary.count >0){
 		[self.chatDictionary removeAllObjects];
 	}
-	
-	
+		
 	[keys addObjectsFromArray:tempKeys];
 	
 	[_chatDictionary setDictionary:chat];

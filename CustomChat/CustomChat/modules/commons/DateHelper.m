@@ -34,8 +34,11 @@
 	[formatter setDateFormat:@"hh:mm a"];
 	
 	NSString *hour = [formatter stringFromDate:[NSDate date]];
-	//review this shit
-	return nil;
+	
+	hour = [hour stringByReplacingOccurrencesOfString:@"p.m." withString:@"pm"];
+	hour = [hour stringByReplacingOccurrencesOfString:@"a.m." withString:@"am"];
+	
+	return hour;
 }
 
 @end
