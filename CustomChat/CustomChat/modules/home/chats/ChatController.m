@@ -66,7 +66,7 @@ float constraintValue;
 
 -(void)viewDidAppear:(BOOL)animated{
 	NSIndexPath* indexPath = [NSIndexPath indexPathForRow:_chatDictionary.count-1 inSection:0];
-	[self.messagesTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+	[self.messagesTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];	
 }
 
 -(void)extractChatKeys:(NSDictionary *)chatDictionary{
